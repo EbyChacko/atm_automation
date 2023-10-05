@@ -24,8 +24,9 @@ def main():
         print("Choose from the following options")
         print("1.Login")
         print("2.Create Account")
-        option = int(input("-->> "))
+        option = input("-->> ")
         try:
+            option = int(option)
             if option == 1:
                 os.system('clear')
                 login()
@@ -35,9 +36,10 @@ def main():
                 create_account()
                 break
             else:
-                raise ValueError("Invalid option. Please choose only 1 or 2.")
+                raise ValueError("")
         except ValueError as ve:
-            print(ve)
+            os.system('clear')
+            print("Invalid option. Please choose only 1 or 2.")
 def login():
     print("login")
 def create_account():
