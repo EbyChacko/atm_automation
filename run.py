@@ -53,8 +53,9 @@ def login():
         account_number = input("Enter Your Account Number : ")
         pin = input("Enter Your ATM pin : ")
         try:
+            account_numbers = personal_details.col_values(1)
             account_details = personal_details.find(account_number)
-            if not account_details:
+            if not account_number in account_numbers:
                 raise ValueError("Account number not found.\n")
             account_pin = personal_details.cell(account_details.row, 5).value
             if account_pin != pin:
@@ -74,8 +75,8 @@ def create_account():
     """
     print(" TO CREATE ACCOUNT, FILL YOUR DETAILS")
     print("*-*-*-*-*-*-*-*_*_*-*_*-*-*-*-*-*-*-*-*\n")
-    all_details = personal_details.get_all_values()
-    last_row = all_details[-1]
+    all_personal_details = personal_details.get_all_values()
+    last_row = all_personal_details[-1]
     last_account_number = last_row[0]
     if last_account_number is None:
         account_number = "100001"
