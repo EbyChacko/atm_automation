@@ -74,7 +74,7 @@ def create_account():
     and store it to the stoarge spreadsheet and show back the account number and pin to user.
     """
     print(" TO CREATE ACCOUNT, FILL YOUR DETAILS")
-    print("*-*-*-*-*-*-*-*_*_*-*_*-*-*-*-*-*-*-*-*\n")
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
     last_row = all_personal_details[-1]
     last_account_number = last_row[0]
@@ -140,8 +140,10 @@ def create_account():
             print("Invalid document number. Please enter an 8-digit number.")
         else:
             break
-    row = [account_number, name, address, mobile_number, pin_number, date_of_join, email, address_proof_document, document_number]
-    personal_details.append_row(row)
+    row_personal = [account_number, name, address, mobile_number, pin_number, date_of_join, email, address_proof_document, document_number]
+    personal_details.append_row(row_personal)
+    row_statement = [ account_number, date_of_join, "Initialize", "0", "0", "0" ]
+    statement.append_row(row_statement)
     os.system('clear')
     print("Account created successfully.\n")
     print(" ACCOUNT DETAILS")
