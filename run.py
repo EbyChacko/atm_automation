@@ -16,14 +16,27 @@ SHEET = GSPREAD_CLIENT.open('atm-automation')
 personal_details = SHEET.worksheet('personal_details')
 statement = SHEET.worksheet('statement')
 
+"""
+function to achieve type writer effect for texts
+credit: Perplexity.AI
+"""
+import sys
+import time
+
+def typewriter_effect(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.1)
+
 def main():
     """
     This is the main funtion that initialize the programm
     """
     while True:
-        print("\n\n  WELCOME TO ATM")
-        print("*-*-*-*-*-*-*-*-*\n")
-        print("Choose from the following options")
+        typewriter_effect("\n\n  WELCOME TO ATM")
+        typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
+        print("\nChoose from the following options")
         print("1.Login")
         print("2.Create Account")
         option = input("-->> ")
@@ -70,13 +83,14 @@ def after_loggin(account_number):
     account_details = personal_details.find(account_number)
     account_name = personal_details.cell(account_details.row, 2).value
     while True:
-        print(f"\n\n  HELLO {account_name}")
-        print("*-*-*-*-*-*-*-*-*\n")
-        print("Choose from the following options")
+        typewriter_effect(f"\n\n  HELLO {account_name}")
+        typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
+        print("\nChoose from the following options")
         print("\n1. Deposit")
         print("2. Withdrawal")
         print("3. Balance Enquiry")
         print("4. Change Pin Number")
+        print("5. Exit")
         option = input("-->> ")
         try:
             option = int(option)
@@ -96,14 +110,19 @@ def after_loggin(account_number):
                 os.system('clear')
                 change_pin(account_number)
                 break
+            elif option == 5:
+                os.system('clear')
+                main()
             else:
-                raise ValueError("Invalid option. Please choose options from 1 to 4 only.")
+                raise ValueError("Invalid option. Please choose options from 1 to 5 only.")
         except ValueError as ve:
-            print("Invalid option. Please choose options from 1 to 4 only.")
+            print("Invalid option. Please choose options from 1 to 5 only.")
 
 
 def deposit(account_number):
-    print("deposit")
+    while True:
+        print("Choose the note")
+
 
 def withdrawal(account_number):
     print("withdrwal")
