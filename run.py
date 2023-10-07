@@ -120,8 +120,106 @@ def after_loggin(account_number):
 
 
 def deposit(account_number):
+    account_number = account_number
+    num_500 = 0
+    num_200 = 0
+    num_100 = 0
+    num_50 = 0
+    num_20 = 0
+    num_10 = 0
+    num_5 = 0
     while True:
         print("Choose the note")
+        print("1. 500 euro Notes")
+        print("2. 200 euro Notes")
+        print("3. 100 euro Notes")
+        print("4. 50 euro Notes")
+        print("5. 20 euro Notes")
+        print("6. 10 euro Notes")
+        print("7. 5 euro Notes")
+        print("8. Proceed Deposit")
+        print("9. Exit")
+        option = input("-->> ")
+        try:
+            option = int(option)
+            if option == 1:
+                while True:
+                    num_500 = input("\nEnter the Number of 500 euro Notes : ")
+                    if not num_500.isdigit() and int(num_500)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 2:           
+                while True:
+                    num_200 = input("\nEnter the Number of 200 euro Notes : ")
+                    if not num_200.isdigit() and int(num_200)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 3:
+                while True:
+                    num_100 = input("\nEnter the Number of 100 euro Notes : ")
+                    if not num_100.isdigit() and int(num_100)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 4:
+                while True:
+                    num_50 = input("\nEnter the Number of 50 euro Notes : ")
+                    if not num_50.isdigit() and int(num_50)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 5:   
+                while True:
+                    num_20 = input("\nEnter the Number of 20 euro Notes : ")
+                    if not num_20.isdigit() and int(num_20)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 6:
+                while True:
+                    num_10 = input("\nEnter the Number of 10 euro Notes : ")
+                    if not num_10.isdigit() and int(num_10)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 7:
+                while True:
+                    num_5 = input("\nEnter the Number of 5 euro Notes : ")
+                    if not num_5.isdigit() and int(num_5)< 0:
+                        print("Please enter a positive number.")
+                    else:
+                        break
+            elif option == 8: 
+                if num_500 == 0 and num_200 == 0 and num_100 ==0 and num_50 == 0 and num_20 == 0 and num_10 == 0 and num_5 == 0:
+                    print("\nYou did not choose any note to deposit\n")
+                    deposit(account_number)
+                else:
+                    total_amount = (int(num_500)*500) + (int(num_200)*200) + (int(num_100)*100) + (int(num_50)*50) + (int(num_20)*20) + (int(num_10)* 10) +(int(num_5)*5)
+                    print ("Confirm your number of notes")
+                    if not num_500 == 0 :
+                        print(f"500 x {num_500}")
+                    if not num_200 == 0 :
+                        print(f"200 x {num_200}")
+                    if not num_100 == 0 :
+                        print(f"100 x {num_100}")
+                    if not num_50 == 0 :
+                        print(f"50 x {num_50}")
+                    if not num_20 == 0 :
+                        print(f"20 x {num_20}")
+                    if not num_10 == 0 :
+                        print(f"10 x {num_10}")
+                    if not num_5 == 0 :
+                        print(f"5 x {num_5}")
+                    print(f"TOTAL AMOUNT : {total_amount}")
+                break
+            elif option ==9:
+                main()
+            else:
+                raise ValueError("Invalid option. Please choose options from 1 to 8 only.")
+        except ValueError as ve:
+            print("Invalid option. Please choose options from 1 to 8 only.")
 
 
 def withdrawal(account_number):
