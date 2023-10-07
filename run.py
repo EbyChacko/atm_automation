@@ -21,7 +21,6 @@ def main():
     This is the main funtion that initialize the programm
     """
     while True:
-        status = True
         print("\n\n  WELCOME TO ATM")
         print("*-*-*-*-*-*-*-*-*\n")
         print("Choose from the following options")
@@ -62,10 +61,58 @@ def login():
                 raise ValueError("Incorrect PIN.\n")
             os.system('clear')
             print("Login successful.")
+            after_loggin(account_number)
             break
         except ValueError as ve:
             print(ve)
 
+def after_loggin(account_number):
+    account_details = personal_details.find(account_number)
+    account_name = personal_details.cell(account_details.row, 2).value
+    while True:
+        print(f"\n\n  HELLO {account_name}")
+        print("*-*-*-*-*-*-*-*-*\n")
+        print("Choose from the following options")
+        print("\n1. Deposit")
+        print("2. Withdrawal")
+        print("3. Balance Enquiry")
+        print("4. Change Pin Number")
+        option = input("-->> ")
+        try:
+            option = int(option)
+            if option == 1:
+                os.system('clear')
+                deposit(account_number)
+                break
+            elif option == 2:
+                os.system('clear')
+                withdrawal(account_number)
+                break
+            elif option == 3:
+                os.system('clear')
+                balance_enquiry(account_number)
+                break
+            elif option == 4:
+                os.system('clear')
+                change_pin(account_number)
+                break
+            else:
+                raise ValueError("Invalid option. Please choose options from 1 to 4 only.")
+        except ValueError as ve:
+            print("Invalid option. Please choose options from 1 to 4 only.")
+
+
+def deposit(account_number):
+    print("deposit")
+
+def withdrawal(account_number):
+    print("withdrwal")
+
+def balance_enquiry(account_number):
+    print("balance")
+
+def change_pin(account_number):
+    print("Change Pin")
 
 def create_account():
     """
