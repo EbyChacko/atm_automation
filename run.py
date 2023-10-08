@@ -27,7 +27,7 @@ def typewriter_effect(text):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(0.03)
 
 def main():
     """
@@ -82,6 +82,7 @@ def login():
 def after_loggin(account_number):
     account_details = personal_details.find(account_number)
     account_name = personal_details.cell(account_details.row, 2).value
+    
     while True:
         typewriter_effect(f"\n\n  HELLO {account_name}")
         typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
@@ -120,6 +121,10 @@ def after_loggin(account_number):
 
 
 def deposit(account_number):
+    """
+    This function works for the deposition of money. 
+    It collects the number's of deferent notes and calculate the total amount and store the data to the statement
+    """
     account_number = account_number
     num_500 = 0
     num_200 = 0
@@ -197,29 +202,57 @@ def deposit(account_number):
                     deposit(account_number)
                 else:
                     total_amount = (int(num_500)*500) + (int(num_200)*200) + (int(num_100)*100) + (int(num_50)*50) + (int(num_20)*20) + (int(num_10)* 10) +(int(num_5)*5)
-                    print ("Confirm your number of notes")
-                    if not num_500 == 0 :
-                        print(f"500 x {num_500}")
-                    if not num_200 == 0 :
-                        print(f"200 x {num_200}")
-                    if not num_100 == 0 :
-                        print(f"100 x {num_100}")
-                    if not num_50 == 0 :
-                        print(f"50 x {num_50}")
-                    if not num_20 == 0 :
-                        print(f"20 x {num_20}")
-                    if not num_10 == 0 :
-                        print(f"10 x {num_10}")
-                    if not num_5 == 0 :
-                        print(f"5 x {num_5}")
-                    print(f"TOTAL AMOUNT : {total_amount}")
+                    while True:
+                        os.system('clear')
+                        print ("\nConfirm your number of notes")
+                        if not num_500 == 0 :
+                            print(f"500 x {num_500}")
+                        if not num_200 == 0 :
+                            print(f"200 x {num_200}")
+                        if not num_100 == 0 :
+                            print(f"100 x {num_100}")
+                        if not num_50 == 0 :
+                            print(f"50 x {num_50}")
+                        if not num_20 == 0 :
+                            print(f"20 x {num_20}")
+                        if not num_10 == 0 :
+                            print(f"10 x {num_10}")
+                        if not num_5 == 0 :
+                            print(f"5 x {num_5}")
+                        print(f"\nTOTAL AMOUNT : {total_amount}\n")
+                        print("\n1. Confirm")
+                        print("2. Cancel")
+                        option = input("-->> ")
+                        try:
+                            option = int(option)
+                            if option == 1:
+                                deposit_date = date.today().strftime("%Y-%m-%d")
+                                all_statement = statement.get_all_values()
+                                customer_statement = []
+                                for row in all_statement:
+                                    if row[0] == account_number:
+                                        customer_statement.append(row)
+                                last_transaction = customer_statement[-1]
+                                balance = int(last_transaction[5])
+                                balance += total_amount
+                                row_statement = [ account_number, deposit_date, "Deposit", "0", total_amount , balance ]
+                                statement.append_row(row_statement)
+                                break
+                            elif option == 2:
+                                os.system('clear')
+                                main()
+                                break
+                            else:
+                                raise ValueError("Invalid option. Please choose only 1 or 2.")
+                        except ValueError as ve:
+                            print("Invalid option. Please choose only 1 or 2.")
                 break
             elif option ==9:
                 main()
             else:
-                raise ValueError("Invalid option. Please choose options from 1 to 8 only.")
+                raise ValueError("Invalid option. Please choose options from 1 to 9 only.")
         except ValueError as ve:
-            print("Invalid option. Please choose options from 1 to 8 only.")
+            print("Invalid option. Please choose options from 1 to 9 only.")
 
 
 def withdrawal(account_number):
@@ -237,8 +270,8 @@ def create_account():
     This function collect all the details of the user to create the account 
     and store it to the stoarge spreadsheet and show back the account number and pin to user.
     """
-    print(" TO CREATE ACCOUNT, FILL YOUR DETAILS")
-    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+    typewriter_effect(" FILL OUT THE FOLLOWING DETAILS TO CREATE ACCOUNT\n")
+    typewriter_effect("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
     last_row = all_personal_details[-1]
     last_account_number = last_row[0]
@@ -310,15 +343,15 @@ def create_account():
     statement.append_row(row_statement)
     os.system('clear')
     print("Account created successfully.\n")
-    print(" ACCOUNT DETAILS")
-    print("*-*-*-*-*-*-*-*-*\n")
+    typewriter_effect(" ACCOUNT DETAILS\n")
+    typewriter_effect("*-*-*-*-*-*-*-*-*\n")
     print(f"Account Number : {account_number}")
     print(f"ATM Pin : {pin_number}")
-    print("\n Save This details for further procedures \n\n")
+    print("\n NOTICE: Save This details for further procedures \n\n")
     while True:
-        print("\nDo You want to login Now ? Choose 1 for 'Yes' or 2 for 'No'")
-        print("1. Yes")
-        print("2. No")
+        print("\nDo You want to login Now ?")
+        print("1. Login")
+        print("2. Exit")
         option = input("-->> : ")
         try:
             option = int(option)
