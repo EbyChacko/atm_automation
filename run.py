@@ -104,7 +104,7 @@ def after_loggin(account_number):
                 break
             elif option == 3:
                 os.system('clear')
-                balance_enquiry(account_number)
+                balance_enquiry(account_number, account_name)
                 break
             elif option == 4:
                 os.system('clear')
@@ -327,8 +327,32 @@ def withdrawal(account_number):
             print("Invalid Amount\n")
 
 
-def balance_enquiry(account_number):
-    print("balance")
+def balance_enquiry(account_number, account_name):
+    all_statement = statement.get_all_values()
+    customer_statement = []
+    for row in all_statement:
+        if row[0] == account_number:
+            customer_statement.append(row)
+    last_transaction = customer_statement[-1]
+    balance = int(last_transaction[5])
+    typewriter_effect(f"\nHello {account_name}")
+    typewriter_effect(f"\n\nAVAILABLE BALANCE €{balance}\n\n")
+    print("\nDo you want to perform another transaction?")
+    print("1. More transaction")
+    print("2. Exit")
+    option = input("-->> : ")
+    try:
+        option = int(option)
+        if option == 1:
+            os.system('clear')
+            after_loggin(account_number)
+        elif option == 2:
+            os.system('clear')
+            main()
+        else:
+            raise ValueError("Invalid option. Please choose only 1 or 2.")
+    except ValueError as ve:
+        print("Invalid option. Please choose only 1 or 2.")
 
 def change_pin(account_number):
     print("Change Pin")
