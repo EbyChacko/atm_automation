@@ -73,12 +73,12 @@ def login():
             if account_pin != pin:
                 raise ValueError("Incorrect PIN.\n")
             os.system('clear')
-            after_loggin(account_number)
+            after_login(account_number)
             break
         except ValueError as ve:
             print(ve)
 
-def after_loggin(account_number):
+def after_login(account_number):
     """
     This function is colled from the login function if the account number and pn matches.
     This Function is the gateway to functions for deposit, withdrowal, balance enquiry and change pin
@@ -251,7 +251,7 @@ def deposit(account_number):
                                     option = int(option)
                                     if option == 1:
                                         os.system('clear')
-                                        after_loggin(account_number)
+                                        after_login(account_number)
                                         break
                                     elif option == 2:
                                         os.system('clear')
@@ -319,7 +319,7 @@ def withdrawal(account_number):
                         option = int(option)
                         if option == 1:
                             os.system('clear')
-                            after_loggin(account_number)
+                            after_login(account_number)
                             break
                         elif option == 2:
                             os.system('clear')
@@ -355,7 +355,7 @@ def balance_enquiry(account_number, account_name):
         option = int(option)
         if option == 1:
             os.system('clear')
-            after_loggin(account_number)
+            after_login(account_number)
         elif option == 2:
             os.system('clear')
             main()
@@ -368,6 +368,56 @@ def change_pin(account_number):
     """
     This function works if the user need to change their ATM pin
     """
+    all_personal_details = personal_details.get_all_values()
+    personal_detail = []
+    for row in all_personal_details:
+        if row[0] == account_number:
+            personal_detail = row
+    new_pin= input("\nEnter new PIN : ")
+    while True:
+        print("Are you sure you want to change the PIN")
+        print("1. Change PIN")
+        print("2. Cancel")
+        option = input("-->> : ")
+        try:
+            option = int(option)
+            if option == 1:
+                for row in all_personal_details:
+                    if row[0] == account_number:
+                        row_index = all_personal_details.index(row) + 1
+                        personal_details.update_cell(row_index, 5, new_pin)
+                typewriter_effect("Updating your ATM PIN... Please wait\n")
+                typewriter_effect("Successfully changed your PIN \n")
+                typewriter_effect(f"\nNEW PIN : {new_pin}\n")
+                print("\nDo you want to perform another transaction?")
+                print("1. More transaction")
+                print("2. Exit")
+                option = input("-->> : ")
+                try:
+                    option = int(option)
+                    if option == 1:
+                        os.system('clear')
+                        after_login(account_number)
+                        break
+                    elif option == 2:
+                        os.system('clear')
+                        main()
+                        break
+                    else:
+                        raise ValueError("Invalid option. Please choose only 1 or 2.")
+                except ValueError as ve:
+                    print("Invalid option. Please choose only 1 or 2.")
+                break
+            elif option == 2:
+                os.system('clear')
+                after_login
+            else:
+                raise ValueError("Invalid option. Please choose only 1 or 2.")
+        except ValueError as ve:
+            print("Invalid option. Please choose only 1 or 2.")
+
+
+
 
 def create_account():
     """
