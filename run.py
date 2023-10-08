@@ -73,7 +73,6 @@ def login():
             if account_pin != pin:
                 raise ValueError("Incorrect PIN.\n")
             os.system('clear')
-            print("Login successful.")
             after_loggin(account_number)
             break
         except ValueError as ve:
@@ -237,6 +236,27 @@ def deposit(account_number):
                                 balance += total_amount
                                 row_statement = [ account_number, deposit_date, "Deposit", "0", total_amount , balance ]
                                 statement.append_row(row_statement)
+                                typewriter_effect("Transaction is processing... Please wait\n")
+                                typewriter_effect("Transaction compleated.\n")
+                                print(f"\nAVAILABLE BALANCE : €{balance}")
+                                print("\nDo you want to perform another transaction?")
+                                print("1. More transaction")
+                                print("2. Exit")
+                                option = input("-->> : ")
+                                try:
+                                    option = int(option)
+                                    if option == 1:
+                                        os.system('clear')
+                                        after_loggin(account_number)
+                                        break
+                                    elif option == 2:
+                                        os.system('clear')
+                                        main()
+                                        break
+                                    else:
+                                        raise ValueError("Invalid option. Please choose only 1 or 2.")
+                                except ValueError as ve:
+                                    print("Invalid option. Please choose only 1 or 2.")
                                 break
                             elif option == 2:
                                 os.system('clear')
@@ -256,7 +276,56 @@ def deposit(account_number):
 
 
 def withdrawal(account_number):
-    print("withdrwal")
+    while True:
+        print("\nNote: The machine do not give coin.\nEnter an amout multiple of 5 \n")
+        withdrow_amount = input("-->> ")
+        try:           
+            if int(withdrow_amount) % 5 or not withdrow_amount.strip() or not withdrow_amount.isdigit() :
+                print("Invalid Amount\n")
+            else:
+                deposit_date = date.today().strftime("%Y-%m-%d")
+                all_statement = statement.get_all_values()
+                customer_statement = []
+                for row in all_statement:
+                    if row[0] == account_number:
+                        customer_statement.append(row)
+                last_transaction = customer_statement[-1]
+                balance = int(last_transaction[5])
+                if int(withdrow_amount) > int(balance):
+                    os.system('clear')
+                    print("Insufficiant balance")
+                    print(f"\nAVAILABLE BALANCE : €{balance}")
+                    main()
+                    break
+                else:
+                    balance -= int(withdrow_amount)
+                    row_statement = [ account_number, deposit_date, "Withdrow", withdrow_amount, "0" , balance ]
+                    statement.append_row(row_statement)
+                    typewriter_effect("Transaction is processing... Please wait\n")
+                    typewriter_effect("Transaction compleated. Collect your cash from the tray\n")
+                    print(f"\nAVAILABLE BALANCE : €{balance}")
+                    print("\nDo you want to perform another transaction?")
+                    print("1. More transaction")
+                    print("2. Exit")
+                    option = input("-->> : ")
+                    try:
+                        option = int(option)
+                        if option == 1:
+                            os.system('clear')
+                            after_loggin(account_number)
+                            break
+                        elif option == 2:
+                            os.system('clear')
+                            main()
+                            break
+                        else:
+                            raise ValueError("Invalid option. Please choose only 1 or 2.")
+                    except ValueError as ve:
+                        print("Invalid option. Please choose only 1 or 2.")
+                    break
+        except ValueError as ve:
+            print("Invalid Amount\n")
+
 
 def balance_enquiry(account_number):
     print("balance")
