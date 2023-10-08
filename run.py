@@ -79,6 +79,10 @@ def login():
             print(ve)
 
 def after_loggin(account_number):
+    """
+    This function is colled from the login function if the account number and pn matches.
+    This Function is the gateway to functions for deposit, withdrowal, balance enquiry and change pin
+    """
     account_details = personal_details.find(account_number)
     account_name = personal_details.cell(account_details.row, 2).value
     
@@ -276,6 +280,9 @@ def deposit(account_number):
 
 
 def withdrawal(account_number):
+    """
+    This Function works for the cash withdrowal
+    """
     while True:
         print("\nNote: The machine do not give coin.\nEnter an amout multiple of 5 \n")
         withdrow_amount = input("-->> ")
@@ -328,6 +335,9 @@ def withdrawal(account_number):
 
 
 def balance_enquiry(account_number, account_name):
+    """
+    This function is for balance enquery
+    """
     all_statement = statement.get_all_values()
     customer_statement = []
     for row in all_statement:
@@ -355,7 +365,9 @@ def balance_enquiry(account_number, account_name):
         print("Invalid option. Please choose only 1 or 2.")
 
 def change_pin(account_number):
-    print("Change Pin")
+    """
+    This function works if the user need to change their ATM pin
+    """
 
 def create_account():
     """
