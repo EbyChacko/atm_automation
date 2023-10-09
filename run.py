@@ -36,9 +36,9 @@ def main():
     while True:
         typewriter_effect("\n\n  WELCOME TO ATM")
         typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
-        print("\nChoose from the following options")
-        print("1.Login")
-        print("2.Create Account")
+        print("\n Choose from the following options")
+        print(" 1.Login")
+        print(" 2.Create Account")
         option = input("-->> ")
         try:
             option = int(option)
@@ -51,9 +51,9 @@ def main():
                 create_account()
                 break
             else:
-                raise ValueError("Invalid option. Please choose only 1 or 2.")
+                raise ValueError(" \nInvalid option. Please choose only 1 or 2.")
         except ValueError as ve:
-            print("Invalid option. Please choose only 1 or 2.")
+            print(" \nInvalid option. Please choose only 1 or 2.")
 
 
 def login():
@@ -62,16 +62,16 @@ def login():
     It take input of account number and ATM pin if its matches login will executed
     """
     while True:
-        account_number = input("Enter Your Account Number : ")
-        pin = input("Enter Your ATM pin : ")
+        account_number = input(" Enter Your Account Number : ")
+        pin = input(" Enter Your ATM pin : ")
         try:
             account_numbers = personal_details.col_values(1)
             account_details = personal_details.find(account_number)
             if not account_number in account_numbers:
-                raise ValueError("Account number not found.\n")
+                raise ValueError("\n Account number not found.\n")
             account_pin = personal_details.cell(account_details.row, 5).value
             if account_pin != pin:
-                raise ValueError("Incorrect PIN.\n")
+                raise ValueError("\n Incorrect PIN.\n")
             os.system('clear')
             after_login(account_number)
             break
@@ -89,12 +89,12 @@ def after_login(account_number):
     while True:
         typewriter_effect(f"\n\n  HELLO {account_name}")
         typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
-        print("\nChoose from the following options")
-        print("\n1. Deposit")
-        print("2. Withdrawal")
-        print("3. Balance Enquiry")
-        print("4. Change Pin Number")
-        print("5. Exit")
+        print("\n Choose from the following options")
+        print("\n 1. Deposit")
+        print(" 2. Withdrawal")
+        print(" 3. Balance Enquiry")
+        print(" 4. Change Pin Number")
+        print(" 5. Exit")
         option = input("-->> ")
         try:
             option = int(option)
@@ -118,9 +118,9 @@ def after_login(account_number):
                 os.system('clear')
                 main()
             else:
-                raise ValueError("Invalid option. Please choose options from 1 to 5 only.")
+                raise ValueError("\n Invalid option. Please choose options from 1 to 5 only.")
         except ValueError as ve:
-            print("Invalid option. Please choose options from 1 to 5 only.")
+            print("\n Invalid option. Please choose options from 1 to 5 only.")
 
 
 def deposit(account_number):
@@ -137,77 +137,77 @@ def deposit(account_number):
     num_10 = 0
     num_5 = 0
     while True:
-        print("Choose the note")
-        print("1. 500 euro Notes")
-        print("2. 200 euro Notes")
-        print("3. 100 euro Notes")
-        print("4. 50 euro Notes")
-        print("5. 20 euro Notes")
-        print("6. 10 euro Notes")
-        print("7. 5 euro Notes")
-        print("8. Proceed Deposit")
-        print("9. Exit")
+        print("\n\n Choose the note")
+        print(" 1. 500 euro Notes")
+        print(" 2. 200 euro Notes")
+        print(" 3. 100 euro Notes")
+        print(" 4. 50 euro Notes")
+        print(" 5. 20 euro Notes")
+        print(" 6. 10 euro Notes")
+        print(" 7. 5 euro Notes")
+        print(" 8. Proceed Deposit")
+        print(" 9. Exit")
         option = input("-->> ")
         try:
             option = int(option)
             if option == 1:
                 while True:
-                    num_500 = input("\nEnter the Number of 500 euro Notes : ")
+                    num_500 = input("\n Enter the Number of 500 euro Notes : ")
                     if not num_500.isdigit() and int(num_500)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 2:           
                 while True:
-                    num_200 = input("\nEnter the Number of 200 euro Notes : ")
+                    num_200 = input("\n Enter the Number of 200 euro Notes : ")
                     if not num_200.isdigit() and int(num_200)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 3:
                 while True:
-                    num_100 = input("\nEnter the Number of 100 euro Notes : ")
+                    num_100 = input("\n Enter the Number of 100 euro Notes : ")
                     if not num_100.isdigit() and int(num_100)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 4:
                 while True:
-                    num_50 = input("\nEnter the Number of 50 euro Notes : ")
+                    num_50 = input("\n Enter the Number of 50 euro Notes : ")
                     if not num_50.isdigit() and int(num_50)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 5:   
                 while True:
-                    num_20 = input("\nEnter the Number of 20 euro Notes : ")
+                    num_20 = input("\n Enter the Number of 20 euro Notes : ")
                     if not num_20.isdigit() and int(num_20)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 6:
                 while True:
-                    num_10 = input("\nEnter the Number of 10 euro Notes : ")
+                    num_10 = input("\n Enter the Number of 10 euro Notes : ")
                     if not num_10.isdigit() and int(num_10)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 7:
                 while True:
-                    num_5 = input("\nEnter the Number of 5 euro Notes : ")
+                    num_5 = input("\n Enter the Number of 5 euro Notes : ")
                     if not num_5.isdigit() and int(num_5)< 0:
-                        print("Please enter a positive number.")
+                        print("\n Please enter a positive number.")
                     else:
                         break
             elif option == 8: 
                 if num_500 == 0 and num_200 == 0 and num_100 ==0 and num_50 == 0 and num_20 == 0 and num_10 == 0 and num_5 == 0:
-                    print("\nYou did not choose any note to deposit\n")
+                    print("\n You did not choose any note to deposit\n")
                     deposit(account_number)
                 else:
                     total_amount = (int(num_500)*500) + (int(num_200)*200) + (int(num_100)*100) + (int(num_50)*50) + (int(num_20)*20) + (int(num_10)* 10) +(int(num_5)*5)
                     while True:
                         os.system('clear')
-                        print ("\nConfirm your number of notes")
+                        print ("\n Confirm your number of notes")
                         if not num_500 == 0 :
                             print(f"500 x {num_500}")
                         if not num_200 == 0 :
@@ -223,8 +223,8 @@ def deposit(account_number):
                         if not num_5 == 0 :
                             print(f"5 x {num_5}")
                         print(f"\nTOTAL AMOUNT : {total_amount}\n")
-                        print("\n1. Confirm")
-                        print("2. Cancel")
+                        print("\n 1. Confirm")
+                        print(" 2. Re-Enter number of notes")
                         option = input("-->> ")
                         try:
                             option = int(option)
@@ -242,10 +242,10 @@ def deposit(account_number):
                                 statement.append_row(row_statement)
                                 typewriter_effect("Transaction is processing... Please wait\n")
                                 typewriter_effect("Transaction compleated.\n")
-                                print(f"\nAVAILABLE BALANCE : €{balance}")
-                                print("\nDo you want to perform another transaction?")
-                                print("1. More transaction")
-                                print("2. Exit")
+                                print(f"\n AVAILABLE BALANCE : €{balance}")
+                                print("\n Do you want to perform another transaction?")
+                                print(" 1. More transaction")
+                                print(" 2. Exit")
                                 option = input("-->> : ")
                                 try:
                                     option = int(option)
@@ -258,25 +258,25 @@ def deposit(account_number):
                                         main()
                                         break
                                     else:
-                                        raise ValueError("Invalid option. Please choose only 1 or 2.")
+                                        raise ValueError("\n Invalid option. Please choose only 1 or 2.")
                                 except ValueError as ve:
-                                    print("Invalid option. Please choose only 1 or 2.")
+                                    print("\n Invalid option. Please choose only 1 or 2.")
                                 break
                             elif option == 2:
                                 os.system('clear')
-                                main()
+                                deposit(account_number)
                                 break
                             else:
-                                raise ValueError("Invalid option. Please choose only 1 or 2.")
+                                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
                         except ValueError as ve:
-                            print("Invalid option. Please choose only 1 or 2.")
+                            print("\n Invalid option. Please choose only 1 or 2.")
                 break
             elif option ==9:
                 main()
             else:
-                raise ValueError("Invalid option. Please choose options from 1 to 9 only.")
+                raise ValueError("\n Invalid option. Please choose options from 1 to 9 only.")
         except ValueError as ve:
-            print("Invalid option. Please choose options from 1 to 9 only.")
+            print("\n Invalid option. Please choose options from 1 to 9 only.")
 
 
 def withdrawal(account_number):
@@ -284,11 +284,11 @@ def withdrawal(account_number):
     This Function works for the cash withdrowal
     """
     while True:
-        print("\nNote: The machine do not give coin.\nEnter an amout multiple of 5 \n")
+        print("\n Note: The machine do not give coin.\nEnter an amout multiple of 5 \n")
         withdrow_amount = input("-->> ")
         try:           
             if int(withdrow_amount) % 5 or not withdrow_amount.strip() or not withdrow_amount.isdigit() :
-                print("Invalid Amount\n")
+                print("\n Invalid Amount\n")
             else:
                 deposit_date = date.today().strftime("%Y-%m-%d")
                 all_statement = statement.get_all_values()
@@ -300,7 +300,7 @@ def withdrawal(account_number):
                 balance = int(last_transaction[5])
                 if int(withdrow_amount) > int(balance):
                     os.system('clear')
-                    print("Insufficiant balance")
+                    print("\n\n\n Insufficiant balance")
                     print(f"\nAVAILABLE BALANCE : €{balance}")
                     main()
                     break
@@ -311,9 +311,9 @@ def withdrawal(account_number):
                     typewriter_effect("Transaction is processing... Please wait\n")
                     typewriter_effect("Transaction compleated. Collect your cash from the tray\n")
                     print(f"\nAVAILABLE BALANCE : €{balance}")
-                    print("\nDo you want to perform another transaction?")
-                    print("1. More transaction")
-                    print("2. Exit")
+                    print("\n Do you want to perform another transaction?")
+                    print(" 1. More transaction")
+                    print(" 2. Exit")
                     option = input("-->> : ")
                     try:
                         option = int(option)
@@ -326,12 +326,12 @@ def withdrawal(account_number):
                             main()
                             break
                         else:
-                            raise ValueError("Invalid option. Please choose only 1 or 2.")
+                            raise ValueError("\n Invalid option. Please choose only 1 or 2.")
                     except ValueError as ve:
-                        print("Invalid option. Please choose only 1 or 2.")
+                        print("\n Invalid option. Please choose only 1 or 2.")
                     break
         except ValueError as ve:
-            print("Invalid Amount\n")
+            print("\n Invalid Amount\n")
 
 
 def balance_enquiry(account_number, account_name):
@@ -347,9 +347,9 @@ def balance_enquiry(account_number, account_name):
     balance = int(last_transaction[5])
     typewriter_effect(f"\nHello {account_name}")
     typewriter_effect(f"\n\nAVAILABLE BALANCE €{balance}\n\n")
-    print("\nDo you want to perform another transaction?")
-    print("1. More transaction")
-    print("2. Exit")
+    print("\n Do you want to perform another transaction?")
+    print(" 1. More transaction")
+    print(" 2. Exit")
     option = input("-->> : ")
     try:
         option = int(option)
@@ -360,9 +360,9 @@ def balance_enquiry(account_number, account_name):
             os.system('clear')
             main()
         else:
-            raise ValueError("Invalid option. Please choose only 1 or 2.")
+            raise ValueError("\n Invalid option. Please choose only 1 or 2.")
     except ValueError as ve:
-        print("Invalid option. Please choose only 1 or 2.")
+        print("\n Invalid option. Please choose only 1 or 2.")
 
 def change_pin(account_number):
     """
@@ -373,11 +373,11 @@ def change_pin(account_number):
     for row in all_personal_details:
         if row[0] == account_number:
             personal_detail = row
-    new_pin= input("\nEnter new PIN : ")
+    new_pin= input("\n Enter a new PIN : ")
     while True:
-        print("Are you sure you want to change the PIN")
-        print("1. Change PIN")
-        print("2. Cancel")
+        print("\n Are you sure you want to change the PIN")
+        print(" 1. Change PIN")
+        print(" 2. Cancel")
         option = input("-->> : ")
         try:
             option = int(option)
@@ -386,12 +386,12 @@ def change_pin(account_number):
                     if row[0] == account_number:
                         row_index = all_personal_details.index(row) + 1
                         personal_details.update_cell(row_index, 5, new_pin)
-                typewriter_effect("Updating your ATM PIN... Please wait\n")
-                typewriter_effect("Successfully changed your PIN \n")
+                typewriter_effect(" Updating your ATM PIN... Please wait\n")
+                typewriter_effect(" Successfully changed your PIN \n")
                 typewriter_effect(f"\nNEW PIN : {new_pin}\n")
-                print("\nDo you want to perform another transaction?")
-                print("1. More transaction")
-                print("2. Exit")
+                print("\n Do you want to perform another transaction?")
+                print(" 1. More transaction")
+                print(" 2. Exit")
                 option = input("-->> : ")
                 try:
                     option = int(option)
@@ -404,9 +404,9 @@ def change_pin(account_number):
                         main()
                         break
                     else:
-                        raise ValueError("Invalid option. Please choose only 1 or 2.")
+                        raise ValueError("\n Invalid option. Please choose only 1 or 2.")
                 except ValueError as ve:
-                    print("Invalid option. Please choose only 1 or 2.")
+                    print("\n Invalid option. Please choose only 1 or 2.")
                 break
             elif option == 2:
                 os.system('clear')
@@ -425,8 +425,8 @@ def create_account():
     This function collect all the details of the user to create the account 
     and store it to the stoarge spreadsheet and show back the account number and pin to user.
     """
-    typewriter_effect(" FILL OUT THE FOLLOWING DETAILS TO CREATE ACCOUNT\n")
-    typewriter_effect("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+    typewriter_effect(" FILL OUT THE DETAILS\n")
+    typewriter_effect("*-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
     last_row = all_personal_details[-1]
     last_account_number = last_row[0]
@@ -436,40 +436,40 @@ def create_account():
         account_number = int(last_account_number) + 1
     date_of_join = date.today().strftime("%Y-%m-%d")
     while True:
-        name = input("\nEnter Name : ")
+        name = input("\n Enter Name : ")
         if not name.strip() or not all(char.isalpha() or char.isspace() for char in name):
-            print("Invalid name. Name cannot be empty and Please enter only alphabets and spaces.")
+            print("\n Invalid name. Name cannot be empty and Please enter only alphabets and spaces.")
         else:
             break
     while True:
-        address = input("\nEnter Address : ")
+        address = input("\n Enter Address : ")
         if not address.strip():
-            print("Address cannot be empty.\n")
+            print("\n Address cannot be empty.\n")
         else:
             break
     while True:
-        mobile_number = input("\nEnter Mobile Number : ")
+        mobile_number = input("\n Enter Mobile Number : ")
         if not mobile_number.strip() or not mobile_number.isdigit() or len(mobile_number) != 10:
-            print("Invalid mobile number. Please enter a 10-digit number.")
+            print("\n Invalid mobile number. Please enter a 10-digit number.")
         else:
             break
     while True:
-        pin_number = input("\nChoose a 4 digit Pin Number for your Account : ")
+        pin_number = input("\n Choose a 4 digit Pin Number for your Account : ")
         if not pin_number.strip() or not pin_number.isdigit() or len(pin_number) != 4:
             print("Invalid PIN number. Please enter a 4-digit number.\n")
         else:
             break
     while True:
-        email = input("\nEnter Email: ")
+        email = input("\n Enter Email: ")
         if not email.strip() or not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            print("Invalid email address.\n")
+            print("\n Invalid email address.\n")
         else:
             break
     while True:
-        print("\nChoose an address proof you have")
-        print("1. Valid Passport")
-        print("2. Valid Driving Licence")
-        print("3. Valid Recidency Permit")
+        print("\n Choose an address proof you have")
+        print(" 1. Valid Passport")
+        print(" 2. Valid Driving Licence")
+        print(" 3. Valid Recidency Permit")
         option = input("-->> : ")
         try:
             option = int(option)
@@ -483,13 +483,13 @@ def create_account():
                 address_proof_document = "Recidency Permit"
                 break
             else:
-                raise ValueError("Invalid option. Please choose only 1,2 or 3.")
+                raise ValueError("\n Invalid option. Please choose only 1,2 or 3.")
         except ValueError as ve:
-            print("Invalid option. Please choose only 1,2 or 3.")
+            print("\n Invalid option. Please choose only 1,2 or 3.")
     while True:
-        document_number = input("\nEnter Document Number: ")
+        document_number = input("\n Enter Document Number: ")
         if not document_number.strip() or not document_number.isdigit() or len(document_number) != 8:
-            print("Invalid document number. Please enter an 8-digit number.")
+            print("\n Invalid document number. Please enter an 8-digit number.")
         else:
             break
     row_personal = [account_number, name, address, mobile_number, pin_number, date_of_join, email, address_proof_document, document_number]
@@ -497,16 +497,16 @@ def create_account():
     row_statement = [ account_number, date_of_join, "Initialize", "0", "0", "0" ]
     statement.append_row(row_statement)
     os.system('clear')
-    print("Account created successfully.\n")
+    print("\n\n Account created successfully.\n")
     typewriter_effect(" ACCOUNT DETAILS\n")
     typewriter_effect("*-*-*-*-*-*-*-*-*\n")
-    print(f"Account Number : {account_number}")
-    print(f"ATM Pin : {pin_number}")
+    print(f" Account Number : {account_number}")
+    print(f" ATM Pin : {pin_number}")
     print("\n NOTICE: Save This details for further procedures \n\n")
     while True:
-        print("\nDo You want to login Now ?")
-        print("1. Login")
-        print("2. Exit")
+        print("\n Do You want to login Now ?")
+        print(" 1. Login")
+        print(" 2. Exit")
         option = input("-->> : ")
         try:
             option = int(option)
@@ -519,8 +519,8 @@ def create_account():
                 main()
                 break
             else:
-                raise ValueError("Invalid option. Please choose only 1 or 2.")
+                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
         except ValueError as ve:
-            print("Invalid option. Please choose only 1 or 2.")
+            print("\n Invalid option. Please choose only 1 or 2.")
 
 main()
