@@ -35,7 +35,7 @@ def main():
     """
     while True:
         typewriter_effect("\n\n  WELCOME TO ATM")
-        typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
+        typewriter_effect("\n *-*-*-*-*-*-*-*-*\n")
         print("\n Choose from the following options")
         print(" 1.Login")
         print(" 2.Create Account")
@@ -62,7 +62,7 @@ def login():
     It take input of account number and ATM pin if its matches login will executed
     """
     while True:
-        account_number = input(" Enter Your Account Number : ")
+        account_number = input("\n\n Enter Your Account Number : ")
         pin = input(" Enter Your ATM pin : ")
         try:
             account_numbers = personal_details.col_values(1)
@@ -88,13 +88,14 @@ def after_login(account_number):
     
     while True:
         typewriter_effect(f"\n\n  HELLO {account_name}")
-        typewriter_effect("\n*-*-*-*-*-*-*-*-*\n")
+        typewriter_effect("\n  *-*-*-*-*-*-*-*-*-*-*-*-*\n")
         print("\n Choose from the following options")
         print("\n 1. Deposit")
         print(" 2. Withdrawal")
         print(" 3. Balance Enquiry")
         print(" 4. Change Pin Number")
-        print(" 5. Exit")
+        print(" 5. Show Statement")
+        print(" 6. Exit")
         option = input("-->> ")
         try:
             option = int(option)
@@ -122,9 +123,9 @@ def after_login(account_number):
                 os.system('clear')
                 main()
             else:
-                raise ValueError("\n Invalid option. Please choose options from 1 to 5 only.")
+                raise ValueError("\n Invalid option. Please choose options from 1 to 6 only.")
         except ValueError as ve:
-            print("\n Invalid option. Please choose options from 1 to 5 only.")
+            print("\n Invalid option. Please choose options from 1 to 6 only.")
 
 
 def deposit(account_number):
@@ -428,7 +429,7 @@ def create_account():
     and store it to the stoarge spreadsheet and show back the account number and pin to user.
     """
     typewriter_effect(" FILL OUT THE DETAILS\n")
-    typewriter_effect("*-*-*-*-*-*-*-*-*-*-*-*\n")
+    typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
     last_row = all_personal_details[-1]
     last_account_number = last_row[0]
@@ -501,7 +502,7 @@ def create_account():
     os.system('clear')
     print("\n\n Account created successfully.\n")
     typewriter_effect(" ACCOUNT DETAILS\n")
-    typewriter_effect("*-*-*-*-*-*-*-*-*\n")
+    typewriter_effect(" *-*-*-*-*-*-*-*-*\n")
     print(f" Account Number : {account_number}")
     print(f" ATM Pin : {pin_number}")
     print("\n NOTICE: Save This details for further procedures \n\n")
@@ -533,5 +534,22 @@ def account_statement(account_number):
         if row[0] == account_number:
             customer_statement.append(row)
     headers = ["Account Number", "Date", "Transaction", "Debit", "credit", "balance"]
+
+    print("\n Do you want to perform another transaction?")
+    print(" 1. More transaction")
+    print(" 2. Exit")
+    option = input("-->> : ")
+    try:
+        option = int(option)
+        if option == 1:
+            os.system('clear')
+            after_login(account_number)
+        elif option == 2:
+            os.system('clear')
+            main()
+        else:
+            raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+    except ValueError as ve:
+        print("\n Invalid option. Please choose only 1 or 2.")
 
 main()
