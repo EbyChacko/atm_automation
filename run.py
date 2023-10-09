@@ -2,8 +2,8 @@ import os
 from datetime import date
 import gspread
 import re
-from pprint import pprint
 from google.oauth2.service_account import Credentials
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -115,6 +115,10 @@ def after_login(account_number):
                 change_pin(account_number)
                 break
             elif option == 5:
+                os.system('clear')
+                account_statement(account_number)
+                break
+            elif option == 6:
                 os.system('clear')
                 main()
             else:
@@ -417,8 +421,6 @@ def change_pin(account_number):
             print("Invalid option. Please choose only 1 or 2.")
 
 
-
-
 def create_account():
     """
     This function is working when the user select the create account option. 
@@ -522,5 +524,14 @@ def create_account():
                 raise ValueError("\n Invalid option. Please choose only 1 or 2.")
         except ValueError as ve:
             print("\n Invalid option. Please choose only 1 or 2.")
+
+
+def account_statement(account_number):
+    all_statement = statement.get_all_values()
+    customer_statement = []
+    for row in all_statement:
+        if row[0] == account_number:
+            customer_statement.append(row)
+    headers = ["Account Number", "Date", "Transaction", "Debit", "credit", "balance"]
 
 main()
