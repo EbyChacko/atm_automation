@@ -3,6 +3,7 @@ from datetime import date
 import gspread
 import re
 from google.oauth2.service_account import Credentials
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -93,9 +94,10 @@ def after_login(account_number):
         print("\n 1. Deposit")
         print(" 2. Withdrawal")
         print(" 3. Balance Enquiry")
-        print(" 4. Change Pin Number")
-        print(" 5. Show Statement")
-        print(" 6. Exit")
+        print(" 4. Show Statement")
+        print(" 5. Change Pin Number")
+        print(" 6. Personal Details")
+        print(" 7. Exit")
         option = input("-->> ")
         try:
             option = int(option)
@@ -113,19 +115,23 @@ def after_login(account_number):
                 break
             elif option == 4:
                 os.system('clear')
-                change_pin(account_number)
+                account_statement(account_number)
                 break
             elif option == 5:
                 os.system('clear')
-                account_statement(account_number)
+                change_details(account_number,"ATM-PIN")
                 break
             elif option == 6:
                 os.system('clear')
+                show_personal_details(account_number)
+                break
+            elif option == 7:
+                os.system('clear')
                 main()
             else:
-                raise ValueError("\n Invalid option. Please choose options from 1 to 6 only.")
+                raise ValueError("\n Invalid option. Please choose options from 1 to 7 only.")
         except ValueError as ve:
-            print("\n Invalid option. Please choose options from 1 to 6 only.")
+            print("\n Invalid option. Please choose options from 1 to 7 only.")
 
 
 def deposit(account_number):
@@ -369,59 +375,126 @@ def balance_enquiry(account_number, account_name):
     except ValueError as ve:
         print("\n Invalid option. Please choose only 1 or 2.")
 
-def change_pin(account_number):
+def change_details(account_number, detail):
     """
     This function works if the user need to change their ATM pin
     """
     all_personal_details = personal_details.get_all_values()
-    personal_detail = []
     for row in all_personal_details:
         if row[0] == account_number:
-            personal_detail = row
-    new_pin= input("\n Enter a new PIN : ")
-    while True:
-        print("\n Are you sure you want to change the PIN")
-        print(" 1. Change PIN")
-        print(" 2. Cancel")
-        option = input("-->> : ")
-        try:
-            option = int(option)
-            if option == 1:
-                for row in all_personal_details:
-                    if row[0] == account_number:
-                        row_index = all_personal_details.index(row) + 1
-                        personal_details.update_cell(row_index, 5, new_pin)
-                typewriter_effect(" Updating your ATM PIN... Please wait\n")
-                typewriter_effect(" Successfully changed your PIN \n")
-                typewriter_effect(f"\nNEW PIN : {new_pin}\n")
-                print("\n Do you want to perform another transaction?")
-                print(" 1. More transaction")
-                print(" 2. Exit")
-                option = input("-->> : ")
-                try:
-                    option = int(option)
-                    if option == 1:
-                        os.system('clear')
-                        after_login(account_number)
-                        break
-                    elif option == 2:
-                        os.system('clear')
-                        main()
-                        break
+            row_index = all_personal_details.index(row) + 1
+            column_index = 0
+            if detail == "ATM-PIN":
+                while True:
+                    new_detail = input("\n Choose a 4 digit Pin Number for your Account : ")
+                    if not new_detail.strip() or not new_detail.isdigit() or len(new_detail) != 4:
+                        print("Invalid PIN number. Please enter a 4-digit number.\n")
                     else:
-                        raise ValueError("\n Invalid option. Please choose only 1 or 2.")
-                except ValueError as ve:
-                    print("\n Invalid option. Please choose only 1 or 2.")
-                break
-            elif option == 2:
-                os.system('clear')
-                after_login
-            else:
-                raise ValueError("Invalid option. Please choose only 1 or 2.")
-        except ValueError as ve:
-            print("Invalid option. Please choose only 1 or 2.")
-
-
+                        break
+                column_index = 5
+            elif detail == "Name":
+                while True:
+                    new_detail = input("\n Enter Name : ")
+                    if not new_detail.strip() or not all(char.isalpha() or char.isspace() for char in new_detail):
+                        print("\n Invalid name. Name cannot be empty and Please enter only alphabets and spaces.")
+                    else:
+                        break
+                column_index = 2
+            elif detail == "Address":
+                while True:
+                    new_detail = input("\n Enter Address : ")
+                    if not new_detail.strip():
+                        print("\n Address cannot be empty.\n")
+                    else:
+                        break
+                column_index = 3
+            elif detail == "Mobile Number":
+                while True:
+                    new_detail = input("\n Enter Mobile Number : ")
+                    if not new_detail.strip() or not new_detail.isdigit() or len(new_detail) != 10:
+                        print("\n Invalid mobile number. Please enter a 10-digit number.")
+                    else:
+                        break
+                column_index = 4
+            elif detail == "Email":
+                while True:
+                    new_detail = input("\n Enter Email: ")
+                    if not new_detail.strip() or not re.match(r"[^@]+@[^@]+\.[^@]+", new_detail):
+                        print("\n Invalid email address.\n")
+                    else:
+                        break
+                column_index = 7
+            elif detail == "Address Proof":
+                while True:
+                    print("\n Choose an address proof you have")
+                    print(" 1. Valid Passport")
+                    print(" 2. Valid Driving Licence")
+                    print(" 3. Valid Recidency Permit")
+                    option = input("-->> : ")
+                    try:
+                        option = int(option)
+                        if option == 1:
+                            address_proof_document = "Passport"
+                            break
+                        elif option == 2:
+                            address_proof_document = "Driving Licence"
+                            break
+                        elif option == 3:
+                            address_proof_document = "Recidency Permit"
+                            break
+                        else:
+                            raise ValueError("\n Invalid option. Please choose only 1,2 or 3.")
+                    except ValueError as ve:
+                        print("\n Invalid option. Please choose only 1,2 or 3.")
+                while True:
+                    document_number = input("\n Enter Document Number: ")
+                    if not document_number.strip() or not document_number.isdigit() or len(document_number) != 8:
+                        print("\n Invalid document number. Please enter an 8-digit number.")
+                    else:
+                        break
+            while True:
+                    print(f"\n Are you sure you want to change {detail}")
+                    print(f" 1. Change {detail}")
+                    print(" 2. Cancel")
+                    option = input("-->> : ")
+                    try:
+                        option = int(option)
+                        if option == 1:
+                            if detail == "Address Proof":
+                                personal_details.update_cell(row_index,8 , address_proof_document)
+                                personal_details.update_cell(row_index, 9, document_number)
+                            else:
+                                personal_details.update_cell(row_index, column_index, new_detail)
+                            typewriter_effect(f" Updating your {detail}... Please wait\n")
+                            typewriter_effect(f" Successfully changed your {detail} \n")
+                            typewriter_effect(f"\nNew {detail} : {new_detail}\n")
+                            print("\n Do you want to Review to your personal details?")
+                            print(" 1. Yes")
+                            print(" 2. Exit")
+                            option = input("-->> : ")
+                            try:
+                                option = int(option)
+                                if option == 1:
+                                    os.system('clear')
+                                    show_personal_details(account_number)
+                                    break
+                                elif option == 2:
+                                    os.system('clear')
+                                    main()
+                                    break
+                                else:
+                                    raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+                            except ValueError as ve:
+                                print("\n Invalid option. Please choose only 1 or 2.")
+                            break
+                        elif option == 2:
+                            os.system('clear')
+                            after_login(account_number)
+                        else:
+                            raise ValueError("Invalid option. Please choose only 1 or 2.")
+                    except ValueError as ve:
+                        print("Invalid option. Please choose only 1 or 2.")
+    
 def create_account():
     """
     This function is working when the user select the create account option. 
@@ -530,11 +603,12 @@ def create_account():
 def account_statement(account_number):
     all_statement = statement.get_all_values()
     customer_statement = []
+    headers = [""]
     for row in all_statement:
         if row[0] == account_number:
             customer_statement.append(row)
     headers = ["Account Number", "Date", "Transaction", "Debit", "credit", "balance"]
-    print(customer_statement) # need to change to table
+    print(tabulate(customer_statement, headers=headers))
     print("\n Do you want to perform another transaction?")
     print(" 1. More transaction")
     print(" 2. Exit")
@@ -551,5 +625,69 @@ def account_statement(account_number):
             raise ValueError("\n Invalid option. Please choose only 1 or 2.")
     except ValueError as ve:
         print("\n Invalid option. Please choose only 1 or 2.")
+
+def show_personal_details(account_number):
+    all_personal_details = personal_details.get_all_values()
+    personal_detail = []
+    for row in all_personal_details:
+        if row[0] == account_number:
+            personal_detail = row
+    os.system('clear')
+    typewriter_effect("\n\n YOUR PERSONAL DETAILS\n")
+    typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+    print(f"\n Account Number       : {personal_detail[0]}")
+    print(f"\n ATM Pin              : {personal_detail[4]}")
+    print(f"\n Name                 : {personal_detail[1]}")
+    print(f"\n Address              : {personal_detail[2]}")
+    print(f"\n Mobile Number        : {personal_detail[3]}")
+    print(f"\n Email                : {personal_detail[6]}")
+    print(f"\n Date of Join         : {personal_detail[5]}")
+    print(f"\n address proof        : {personal_detail[7]}")
+    print(f"\n Address proof Number : {personal_detail[8]}\n")
+    print("\n Do you want to edit the details")
+    print(" 1. Edit")
+    print(" 2. Cancel")
+    option = input("-->> : ")
+    try:
+        option = int(option)
+        if option == 1:
+            os.system('clear')
+            typewriter_effect("\n\n UPDATE YOUR PERSONAL DETAILS\n")
+            typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+            print("What you want to change?")
+            print("1. Name")
+            print("2. Address")
+            print("3. Mobile Number")
+            print("4. Email")
+            print("5. address proof")
+            print("6. Cancel")
+            option = input("-->> : ")
+            try:
+                option = int(option)
+                if option == 1:
+                    change_details(account_number, "Name")
+                elif option == 2:
+                    change_details(account_number, "Address")
+                elif option == 3:
+                    change_details(account_number, "Mobile Number")
+                elif option == 4:
+                    change_details(account_number, "Email")
+                elif option == 5:
+                    change_details(account_number, "Address Proof")
+                elif option == 6:
+                    os.system('clear')
+                    main()
+                else:
+                    raise ValueError("Invalid option. Please choose only 1 or 6.")
+            except ValueError as ve:
+                print("Invalid option. Please choose only 1 or 6.")
+        elif option == 2:
+            os.system('clear')
+            main()
+        else:
+            raise ValueError("Invalid option. Please choose only 1 or 2.")
+    except ValueError as ve:
+        print("Invalid option. Please choose only 1 or 2.")
+
 
 main()
