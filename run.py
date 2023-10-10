@@ -214,19 +214,19 @@ def deposit(account_number):
                         os.system('clear')
                         print ("\n Confirm your number of notes")
                         if not num_500 == 0 :
-                            print(f"500 x {num_500}")
+                            print(f" 500 x {num_500}")
                         if not num_200 == 0 :
-                            print(f"200 x {num_200}")
+                            print(f" 200 x {num_200}")
                         if not num_100 == 0 :
-                            print(f"100 x {num_100}")
+                            print(f" 100 x {num_100}")
                         if not num_50 == 0 :
-                            print(f"50 x {num_50}")
+                            print(f" 50 x {num_50}")
                         if not num_20 == 0 :
-                            print(f"20 x {num_20}")
+                            print(f" 20 x {num_20}")
                         if not num_10 == 0 :
-                            print(f"10 x {num_10}")
+                            print(f" 10 x {num_10}")
                         if not num_5 == 0 :
-                            print(f"5 x {num_5}")
+                            print(f" 5 x {num_5}")
                         print(f"\nTOTAL AMOUNT : {total_amount}\n")
                         print("\n 1. Confirm")
                         print(" 2. Re-Enter number of notes")
@@ -534,7 +534,7 @@ def account_statement(account_number):
         if row[0] == account_number:
             customer_statement.append(row)
     headers = ["Account Number", "Date", "Transaction", "Debit", "credit", "balance"]
-
+    print(customer_statement) # need to change to table
     print("\n Do you want to perform another transaction?")
     print(" 1. More transaction")
     print(" 2. Exit")
