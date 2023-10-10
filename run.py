@@ -234,53 +234,55 @@ def deposit(account_number):
                         if not num_5 == 0 :
                             print(f" 5 x {num_5}")
                         print(f"\nTOTAL AMOUNT : {total_amount}\n")
-                        print("\n 1. Confirm")
-                        print(" 2. Re-Enter number of notes")
-                        option = input("-->> ")
-                        try:
-                            option = int(option)
-                            if option == 1:
-                                deposit_date = date.today().strftime("%Y-%m-%d")
-                                all_statement = statement.get_all_values()
-                                customer_statement = []
-                                for row in all_statement:
-                                    if row[0] == account_number:
-                                        customer_statement.append(row)
-                                last_transaction = customer_statement[-1]
-                                balance = int(last_transaction[5])
-                                balance += total_amount
-                                row_statement = [ account_number, deposit_date, "Deposit", "0", total_amount , balance ]
-                                statement.append_row(row_statement)
-                                typewriter_effect("Transaction is processing... Please wait\n")
-                                typewriter_effect("Transaction compleated.\n")
-                                print(f"\n AVAILABLE BALANCE : €{balance}")
-                                print("\n Do you want to perform another transaction?")
-                                print(" 1. More transaction")
-                                print(" 2. Exit")
-                                option = input("-->> : ")
-                                try:
-                                    option = int(option)
-                                    if option == 1:
-                                        os.system('clear')
-                                        after_login(account_number)
+                        while True:
+                            print("\n 1. Confirm")
+                            print(" 2. Re-Enter number of notes")
+                            option = input("-->> ")
+                            try:
+                                option = int(option)
+                                if option == 1:
+                                    deposit_date = date.today().strftime("%Y-%m-%d")
+                                    all_statement = statement.get_all_values()
+                                    customer_statement = []
+                                    for row in all_statement:
+                                        if row[0] == account_number:
+                                            customer_statement.append(row)
+                                    last_transaction = customer_statement[-1]
+                                    balance = int(last_transaction[5])
+                                    balance += total_amount
+                                    row_statement = [ account_number, deposit_date, "Deposit", "0", total_amount , balance ]
+                                    statement.append_row(row_statement)
+                                    typewriter_effect("Transaction is processing... Please wait\n")
+                                    typewriter_effect("Transaction compleated.\n")
+                                    print(f"\n AVAILABLE BALANCE : €{balance}")
+                                    while True:
+                                        print("\n Do you want to perform another transaction?")
+                                        print(" 1. More transaction")
+                                        print(" 2. Exit")
+                                        option = input("-->> : ")
+                                        try:
+                                            option = int(option)
+                                            if option == 1:
+                                                os.system('clear')
+                                                after_login(account_number)
+                                                break
+                                            elif option == 2:
+                                                os.system('clear')
+                                                main()
+                                                break
+                                            else:
+                                                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+                                        except ValueError as ve:
+                                            print("\n Invalid option. Please choose only 1 or 2.")
                                         break
-                                    elif option == 2:
-                                        os.system('clear')
-                                        main()
-                                        break
-                                    else:
-                                        raise ValueError("\n Invalid option. Please choose only 1 or 2.")
-                                except ValueError as ve:
-                                    print("\n Invalid option. Please choose only 1 or 2.")
-                                break
-                            elif option == 2:
-                                os.system('clear')
-                                deposit(account_number)
-                                break
-                            else:
-                                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
-                        except ValueError as ve:
-                            print("\n Invalid option. Please choose only 1 or 2.")
+                                elif option == 2:
+                                    os.system('clear')
+                                    deposit(account_number)
+                                    break
+                                else:
+                                    raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+                            except ValueError as ve:
+                                print("\n Invalid option. Please choose only 1 or 2.")
                 break
             elif option ==9:
                 main()
@@ -322,25 +324,26 @@ def withdrawal(account_number):
                     typewriter_effect("Transaction is processing... Please wait\n")
                     typewriter_effect("Transaction compleated. Collect your cash from the tray\n")
                     print(f"\nAVAILABLE BALANCE : €{balance}")
-                    print("\n Do you want to perform another transaction?")
-                    print(" 1. More transaction")
-                    print(" 2. Exit")
-                    option = input("-->> : ")
-                    try:
-                        option = int(option)
-                        if option == 1:
-                            os.system('clear')
-                            after_login(account_number)
-                            break
-                        elif option == 2:
-                            os.system('clear')
-                            main()
-                            break
-                        else:
-                            raise ValueError("\n Invalid option. Please choose only 1 or 2.")
-                    except ValueError as ve:
-                        print("\n Invalid option. Please choose only 1 or 2.")
-                    break
+                    while True:
+                        print("\n Do you want to perform another transaction?")
+                        print(" 1. More transaction")
+                        print(" 2. Exit")
+                        option = input("-->> : ")
+                        try:
+                            option = int(option)
+                            if option == 1:
+                                os.system('clear')
+                                after_login(account_number)
+                                break
+                            elif option == 2:
+                                os.system('clear')
+                                main()
+                                break
+                            else:
+                                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+                        except ValueError as ve:
+                            print("\n Invalid option. Please choose only 1 or 2.")
+                        break
         except ValueError as ve:
             print("\n Invalid Amount\n")
 
@@ -358,26 +361,29 @@ def balance_enquiry(account_number, account_name):
     balance = int(last_transaction[5])
     typewriter_effect(f"\nHello {account_name}")
     typewriter_effect(f"\n\nAVAILABLE BALANCE €{balance}\n\n")
-    print("\n Do you want to perform another transaction?")
-    print(" 1. More transaction")
-    print(" 2. Exit")
-    option = input("-->> : ")
-    try:
-        option = int(option)
-        if option == 1:
-            os.system('clear')
-            after_login(account_number)
-        elif option == 2:
-            os.system('clear')
-            main()
-        else:
-            raise ValueError("\n Invalid option. Please choose only 1 or 2.")
-    except ValueError as ve:
-        print("\n Invalid option. Please choose only 1 or 2.")
+    while True:
+        print("\n Do you want to perform another transaction?")
+        print(" 1. More transaction")
+        print(" 2. Exit")
+        option = input("-->> : ")
+        try:
+            option = int(option)
+            if option == 1:
+                os.system('clear')
+                after_login(account_number)
+                break
+            elif option == 2:
+                os.system('clear')
+                main()
+                break
+            else:
+                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+        except ValueError as ve:
+            print("\n Invalid option. Please choose only 1 or 2.")
 
 def change_details(account_number, detail):
     """
-    This function works if the user need to change their ATM pin
+    This function works if the user need to change their personal details or atm Pin
     """
     all_personal_details = personal_details.get_all_values()
     for row in all_personal_details:
@@ -453,21 +459,22 @@ def change_details(account_number, detail):
                     else:
                         break
             while True:
-                    print(f"\n Are you sure you want to change {detail}")
-                    print(f" 1. Change {detail}")
-                    print(" 2. Cancel")
-                    option = input("-->> : ")
-                    try:
-                        option = int(option)
-                        if option == 1:
-                            if detail == "Address Proof":
-                                personal_details.update_cell(row_index,8 , address_proof_document)
-                                personal_details.update_cell(row_index, 9, document_number)
-                            else:
-                                personal_details.update_cell(row_index, column_index, new_detail)
-                            typewriter_effect(f" Updating your {detail}... Please wait\n")
-                            typewriter_effect(f" Successfully changed your {detail} \n")
-                            typewriter_effect(f"\nNew {detail} : {new_detail}\n")
+                print(f"\n Are you sure you want to change {detail}")
+                print(f" 1. Change {detail}")
+                print(" 2. Cancel")
+                option = input("-->> : ")
+                try:
+                    option = int(option)
+                    if option == 1:
+                        if detail == "Address Proof":
+                            personal_details.update_cell(row_index,8 , address_proof_document)
+                            personal_details.update_cell(row_index, 9, document_number)
+                        else:
+                            personal_details.update_cell(row_index, column_index, new_detail)
+                        typewriter_effect(f" Updating your {detail}... Please wait\n")
+                        typewriter_effect(f" Successfully changed your {detail} \n")
+                        typewriter_effect(f"\nNew {detail} : {new_detail}\n")
+                        while True:
                             print("\n Do you want to Review to your personal details?")
                             print(" 1. Yes")
                             print(" 2. Exit")
@@ -487,13 +494,13 @@ def change_details(account_number, detail):
                             except ValueError as ve:
                                 print("\n Invalid option. Please choose only 1 or 2.")
                             break
-                        elif option == 2:
-                            os.system('clear')
-                            after_login(account_number)
-                        else:
-                            raise ValueError("Invalid option. Please choose only 1 or 2.")
-                    except ValueError as ve:
-                        print("Invalid option. Please choose only 1 or 2.")
+                    elif option == 2:
+                        os.system('clear')
+                        after_login(account_number)
+                    else:
+                        raise ValueError("Invalid option. Please choose only 1 or 2.")
+                except ValueError as ve:
+                    print("Invalid option. Please choose only 1 or 2.")
     
 def create_account():
     """
@@ -609,22 +616,23 @@ def account_statement(account_number):
             customer_statement.append(row)
     headers = ["Account Number", "Date", "Transaction", "Debit", "credit", "balance"]
     print(tabulate(customer_statement, headers=headers))
-    print("\n Do you want to perform another transaction?")
-    print(" 1. More transaction")
-    print(" 2. Exit")
-    option = input("-->> : ")
-    try:
-        option = int(option)
-        if option == 1:
-            os.system('clear')
-            after_login(account_number)
-        elif option == 2:
-            os.system('clear')
-            main()
-        else:
-            raise ValueError("\n Invalid option. Please choose only 1 or 2.")
-    except ValueError as ve:
-        print("\n Invalid option. Please choose only 1 or 2.")
+    while True:
+        print("\n Do you want to perform another transaction?")
+        print(" 1. More transaction")
+        print(" 2. Exit")
+        option = input("-->> : ")
+        try:
+            option = int(option)
+            if option == 1:
+                os.system('clear')
+                after_login(account_number)
+            elif option == 2:
+                os.system('clear')
+                main()
+            else:
+                raise ValueError("\n Invalid option. Please choose only 1 or 2.")
+        except ValueError as ve:
+            print("\n Invalid option. Please choose only 1 or 2.")
 
 def show_personal_details(account_number):
     all_personal_details = personal_details.get_all_values()
@@ -644,50 +652,52 @@ def show_personal_details(account_number):
     print(f"\n Date of Join         : {personal_detail[5]}")
     print(f"\n address proof        : {personal_detail[7]}")
     print(f"\n Address proof Number : {personal_detail[8]}\n")
-    print("\n Do you want to edit the details")
-    print(" 1. Edit")
-    print(" 2. Cancel")
-    option = input("-->> : ")
-    try:
-        option = int(option)
-        if option == 1:
-            os.system('clear')
-            typewriter_effect("\n\n UPDATE YOUR PERSONAL DETAILS\n")
-            typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
-            print("What you want to change?")
-            print("1. Name")
-            print("2. Address")
-            print("3. Mobile Number")
-            print("4. Email")
-            print("5. address proof")
-            print("6. Cancel")
-            option = input("-->> : ")
-            try:
-                option = int(option)
-                if option == 1:
-                    change_details(account_number, "Name")
-                elif option == 2:
-                    change_details(account_number, "Address")
-                elif option == 3:
-                    change_details(account_number, "Mobile Number")
-                elif option == 4:
-                    change_details(account_number, "Email")
-                elif option == 5:
-                    change_details(account_number, "Address Proof")
-                elif option == 6:
-                    os.system('clear')
-                    main()
-                else:
-                    raise ValueError("Invalid option. Please choose only 1 or 6.")
-            except ValueError as ve:
-                print("Invalid option. Please choose only 1 or 6.")
-        elif option == 2:
-            os.system('clear')
-            main()
-        else:
-            raise ValueError("Invalid option. Please choose only 1 or 2.")
-    except ValueError as ve:
-        print("Invalid option. Please choose only 1 or 2.")
+    while True:
+        print("\n Do you want to edit the details")
+        print(" 1. Edit")
+        print(" 2. Cancel")
+        option = input("-->> : ")
+        try:
+            option = int(option)
+            if option == 1:
+                os.system('clear')
+                typewriter_effect("\n\n UPDATE YOUR PERSONAL DETAILS\n")
+                typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+                while True:
+                    print("\n What you want to change?")
+                    print(" 1. Name")
+                    print(" 2. Address")
+                    print(" 3. Mobile Number")
+                    print(" 4. Email")
+                    print(" 5. address proof")
+                    print(" 6. Cancel")
+                    option = input("-->> : ")
+                    try:
+                        option = int(option)
+                        if option == 1:
+                            change_details(account_number, "Name")
+                        elif option == 2:
+                            change_details(account_number, "Address")
+                        elif option == 3:
+                            change_details(account_number, "Mobile Number")
+                        elif option == 4:
+                            change_details(account_number, "Email")
+                        elif option == 5:
+                            change_details(account_number, "Address Proof")
+                        elif option == 6:
+                            os.system('clear')
+                            main()
+                        else:
+                            raise ValueError("Invalid option. Please choose only 1 or 6.")
+                    except ValueError as ve:
+                        print("Invalid option. Please choose only 1 or 6.")
+            elif option == 2:
+                os.system('clear')
+                main()
+            else:
+                raise ValueError("Invalid option. Please choose only 1 or 2.")
+        except ValueError as ve:
+            print("Invalid option. Please choose only 1 or 2.")
 
 
 main()
