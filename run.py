@@ -390,17 +390,13 @@ def change_details(account_number, detail):
                                                          address_proof)
                             personal_details.update_cell(row_index, 9,
                                                          document_number)
-                            typewriter_effect(f" Updating your {detail}...")
-                            typewriter_effect(f" Please wait\n")
-                            typewriter_effect(f" {detail} Updation Suyccessfull\n")
                         else:
                             personal_details.update_cell(row_index,
                                                          column_index,
                                                          new_detail)
-                            typewriter_effect(f" Updating your {detail}...")
-                            typewriter_effect(f" Please wait\n")
-                            typewriter_effect(f" {detail} Updation Suyccessfull\n")
-                            typewriter_effect(f"\nNew {detail} : {new_detail}\n")
+                        typewriter_effect(f" Updating your {detail}...")
+                        typewriter_effect(f" Please wait\n")
+                        typewriter_effect(f" Updation Successfull\n")
                         review_detail(account_number)
                     elif option == 2:
                         os.system('clear')
