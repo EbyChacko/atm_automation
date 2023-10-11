@@ -106,7 +106,7 @@ def login_escape():
             else:
                 print("Invalid option. Please choose only 1 to 3.")
         except ValueError as ve:
-            print(" \nInvalid option. Please choose only 1 to 2.")
+            print(" \nInvalid option. Please choose only 1 to 3.")
 
 
 def after_login(account_number):
@@ -360,10 +360,10 @@ def change_details(account_number, detail):
             row_index = all_personal_details.index(row) + 1
             column_index = 0
             if detail == "ATM-PIN":
-                input_pin()
+                new_detail = input_pin()
                 column_index = 5
             elif detail == "Name":
-                input_name()
+                new_detail = input_name()
                 column_index = 2
             elif detail == "Address":
                 new_detail = input_address()
@@ -390,14 +390,17 @@ def change_details(account_number, detail):
                                                          address_proof)
                             personal_details.update_cell(row_index, 9,
                                                          document_number)
+                            typewriter_effect(f" Updating your {detail}...")
+                            typewriter_effect(f" Please wait\n")
+                            typewriter_effect(f" {detail} Updation Suyccessfull\n")
                         else:
                             personal_details.update_cell(row_index,
                                                          column_index,
                                                          new_detail)
-                        typewriter_effect(f" Updating your {detail}...")
-                        typewriter_effect(f" Please wait\n")
-                        typewriter_effect(f" {detail} Updation Suyccessfull\n")
-                        typewriter_effect(f"\nNew {detail} : {new_detail}\n")
+                            typewriter_effect(f" Updating your {detail}...")
+                            typewriter_effect(f" Please wait\n")
+                            typewriter_effect(f" {detail} Updation Suyccessfull\n")
+                            typewriter_effect(f"\nNew {detail} : {new_detail}\n")
                         review_detail(account_number)
                     elif option == 2:
                         os.system('clear')
@@ -414,7 +417,7 @@ def input_pin():
         if not pin.strip() or \
             not pin.isdigit() or \
                 len(pin) != 4:
-            print("Invalid PIN number. Please enter a 4-digit number.\n")
+            print("Invalid PIN number. Enter a 4-digit number.\n")
         else:
             return pin
 
@@ -477,7 +480,7 @@ def input_address_proof():
             else:
                 raise ValueError("\n Invalid option. Choose only 1,2 or 3.")
         except ValueError as ve:
-            print("\n Invalid option. Please choose only 1,2 or 3.")
+            print("\n Invalid option. Choose only 1,2 or 3.")
 
 
 def input_document_number():
@@ -493,8 +496,8 @@ def input_document_number():
 
 def review_detail(account_number):
     while True:
-        print("\n Do you want to Review to your personal details?")
-        print(" 1. Yes")
+        print("\n Do you want to Review your personal details?")
+        print(" 1. Review Details")
         print(" 2. Exit")
         option = input("-->> : ")
         try:
@@ -671,9 +674,9 @@ def call_update_details(account_number):
                 os.system('clear')
                 main()
             else:
-                print("Invalid option. Please choose only 1 or 6.")
+                print("Invalid option. Choose only from 1 to 6.")
         except ValueError as ve:
-            print("Invalid option. Please choose only 1 or 6.")
+            print("Invalid option. Choose only from 1 to 6.")
 
 
 main()
