@@ -73,7 +73,7 @@ def login():
             if account_number not in account_numbers:
                 raise ValueError("\n Account number not found.\n")
             hashed_pin = personal_details.cell(account_details.row, 5).value
-            if bcrypt.checkpw(pin, hashed_pin):
+            if bcrypt.checkpw(pin.encode('utf-8'), hashed_pin):
                 raise ValueError("\n Incorrect PIN.\n")
             os.system('clear')
             after_login(account_number)
@@ -84,6 +84,11 @@ def login():
 
 
 def login_escape():
+    """
+    this function is used when there is an unexpecter error
+    occures when login. In this function there are three options.
+    try again, create account and exit.
+    """
     while True:
         print("1. Try Again")
         print("2. Create Account")
@@ -164,6 +169,9 @@ def after_login(account_number):
 
 
 def number_of_notes(note):
+    """
+    this function used to input number of notes from the user
+    """
     while True:
         num = input(f"\n Enter the Number of {note} euro Notes : ")
         if not num.isdigit() and int(num) < 0:
@@ -250,10 +258,18 @@ def deposit(account_number):
 
 
 def calc_amount(num_list, note_list):
+    """
+    this function calculate the total amount
+    using the number of notes that enter by the user
+    """
     return sum([int(num) * note for num, note in zip(num_list, note_list)])
 
 
 def confirm_or_re_enter(account_number, total_amount):
+    """
+    This function is working after the user enter all the number of notes
+    to confirm the number of notes are correct
+    """
     while True:
         print("\n 1. Confirm")
         print(" 2. Re-Enter number of notes")
@@ -273,6 +289,10 @@ def confirm_or_re_enter(account_number, total_amount):
 
 
 def perform_deposit(account_number, total_amount):
+    """
+    this function is called from the deposit function to perform the deposit
+    This function store datas to the spreadsheet.
+    """
     deposit_date = date.today().strftime("%Y-%m-%d")
     all_statement = statement.get_all_values()
     customer_statement = []
@@ -408,12 +428,18 @@ def change_details(account_number, detail):
 
 
 def hash_pin(pin):
+    """
+    used to perform password-encoding to store secure
+    """
     encoded_pin = pin.encode('utf-8')
     hashed_pin = bcrypt.hashpw(encoded_pin, bcrypt.gensalt())
     return hashed_pin
 
 
 def input_pin():
+    """
+    accept user input fot ATM pin and validate it
+    """
     while True:
         pin = input("\n Choose a 4 digit Pin Number : ")
         if not pin.strip() or \
@@ -425,6 +451,9 @@ def input_pin():
 
 
 def input_name():
+    """
+    accept user input fot Name and validate it
+    """
     while True:
         name = input("\n Enter Name : ")
         if not name.strip() or \
@@ -435,6 +464,9 @@ def input_name():
 
 
 def input_address():
+    """
+    accept user input fot Address and validate it
+    """
     while True:
         address = input("\n Enter Address : ")
         if not address.strip():
@@ -444,6 +476,9 @@ def input_address():
 
 
 def input_Mobile_number():
+    """
+    accept user input fot Mobile number and validate it
+    """
     while True:
         mobile_number = input("\n Enter Mobile Number : ")
         if not mobile_number.strip() or \
@@ -455,6 +490,9 @@ def input_Mobile_number():
 
 
 def input_email():
+    """
+    accept user input fot email and validate it
+    """
     while True:
         email = input("\n Enter Email: ")
         if not email.strip() or \
@@ -465,6 +503,9 @@ def input_email():
 
 
 def input_address_proof():
+    """
+    accept user input fot address proof and validate it
+    """
     while True:
         print("\n Choose an address proof you have")
         print(" 1. Valid Passport")
@@ -486,6 +527,9 @@ def input_address_proof():
 
 
 def input_document_number():
+    """
+    accept user input fot Address proof number and validate it
+    """
     while True:
         document_number = input("\n Enter Document Number: ")
         if not document_number.strip() or \
@@ -497,6 +541,9 @@ def input_document_number():
 
 
 def review_detail(account_number):
+    """
+    give the customer a option to review the personal details
+    """
     while True:
         print("\n Do you want to Review your personal details?")
         print(" 1. Review Details")
@@ -577,6 +624,9 @@ def create_account():
 
 
 def account_statement(account_number):
+    """
+    for showing the table data of the account statement
+    """
     all_statement = statement.get_all_values()
     customer_statement = []
     headers = [""]
@@ -590,6 +640,10 @@ def account_statement(account_number):
 
 
 def perform_another_transaction(account_number):
+    """
+    give option to do more transaction from the
+    current page to the after login page
+    """
     while True:
         print("\n Do you want to perform another transaction?")
         print(" 1. More transaction")
@@ -610,6 +664,10 @@ def perform_another_transaction(account_number):
 
 
 def show_personal_details(account_number):
+    """
+    To print all the personal details of the user
+    after that gives a chance to edit the details that shown
+    """
     all_personal_details = personal_details.get_all_values()
     personal_detail = []
     for row in all_personal_details:
@@ -651,6 +709,9 @@ def show_personal_details(account_number):
 
 
 def call_update_details(account_number):
+    """
+    To edit the personal details of the user as per request
+    """
     while True:
         print("\n What you want to change?")
         print(" 1. Name")
