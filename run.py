@@ -20,6 +20,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('atm-automation')
 personal_details = SHEET.worksheet('personal_details')
 statement = SHEET.worksheet('statement')
+SALT = bcrypt.gensalt()
 
 
 def typewriter_effect(text):
@@ -73,7 +74,7 @@ def login():
             if account_number not in account_numbers:
                 raise ValueError("\n Account number not found.\n")
             hashed_pin = personal_details.cell(account_details.row, 5).value
-            if bcrypt.checkpw(pin.encode('utf-8'), hashed_pin):
+            if bcrypt.checkpw(pin.encode('utf-8'), hashed_pin.encode('utf-8')):
                 raise ValueError("\n Incorrect PIN.\n")
             os.system('clear')
             after_login(account_number)
@@ -432,8 +433,10 @@ def hash_pin(pin):
     used to perform password-encoding to store secure
     """
     encoded_pin = pin.encode('utf-8')
-    hashed_pin = bcrypt.hashpw(encoded_pin, bcrypt.gensalt())
-    return hashed_pin
+    hashed_pin = bcrypt.hashpw(encoded_pin, SALT)
+    print(hashed_pin)
+    return str(hashed_pin)
+    
 
 
 def input_pin():
@@ -742,4 +745,5 @@ def call_update_details(account_number):
             print("Invalid option. Choose only from 1 to 6.")
 
 
-main()
+if __name__ == "__main__": 
+    main()
