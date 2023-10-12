@@ -6,6 +6,8 @@ from google.oauth2.service_account import Credentials
 from tabulate import tabulate
 import sys
 import time
+import bcrypt
+import json
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -70,11 +72,9 @@ def login():
             account_details = personal_details.find(account_number)
             if account_number not in account_numbers:
                 raise ValueError("\n Account number not found.\n")
-                login_escape()
-            account_pin = personal_details.cell(account_details.row, 5).value
-            if account_pin != pin:
+            hashed_pin = personal_details.cell(account_details.row, 5).value
+            if bcrypt.checkpw(pin, hashed_pin):
                 raise ValueError("\n Incorrect PIN.\n")
-                login_escape()
             os.system('clear')
             after_login(account_number)
             break
@@ -407,6 +407,12 @@ def change_details(account_number, detail):
                     print("Invalid option. Choose only 1 or 2.")
 
 
+def hash_pin(pin):
+    encoded_pin = pin.encode('utf-8')
+    hashed_pin = bcrypt.hashpw(encoded_pin, bcrypt.gensalt())
+    return hashed_pin
+
+
 def input_pin():
     while True:
         pin = input("\n Choose a 4 digit Pin Number : ")
@@ -415,7 +421,7 @@ def input_pin():
                 len(pin) != 4:
             print("Invalid PIN number. Enter a 4-digit number.\n")
         else:
-            return pin
+            return hash_pin(pin)
 
 
 def input_name():
