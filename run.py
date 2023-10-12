@@ -36,7 +36,7 @@ def main():
     This is the main funtion that initialize the programm
     """
     while True:
-        typewriter_effect("\n\n  WELCOME TO ATM")
+        typewriter_effect("\n  WELCOME TO ATM")
         typewriter_effect("\n *-*-*-*-*-*-*-*-*\n")
         print("\n Choose from the following options")
         print(" 1.Login")
@@ -119,7 +119,7 @@ def after_login(account_number):
     account_details = personal_details.find(account_number)
     account_name = personal_details.cell(account_details.row, 2).value
     while True:
-        typewriter_effect(f"\n\n  HELLO {account_name}")
+        typewriter_effect(f"\n  HELLO {account_name}")
         typewriter_effect("\n  *-*-*-*-*-*-*-*-*-*-*-*-*\n")
         print("\n Choose from the following options")
         print("\n 1. Deposit")
@@ -296,7 +296,7 @@ def withdrawal(account_number):
     """
     while True:
         print("\n Note: The machine do not give coin.")
-        print("Enter an amout multiple of 5 \n")
+        print(" Enter an amout multiple of 5 \n")
         withdrow_amount = input("-->> ")
         try:
             if int(withdrow_amount) % 5 or \
