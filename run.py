@@ -7,7 +7,6 @@ from tabulate import tabulate
 import sys
 import time
 import bcrypt
-import json
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -73,8 +72,8 @@ def login():
             account_details = personal_details.find(account_number)
             if account_number not in account_numbers:
                 raise ValueError("\n Account number not found.\n")
-            hashed_pin = personal_details.cell(account_details.row, 5).value
-            if bcrypt.checkpw(pin.encode('utf-8'), hashed_pin.encode('utf-8')):
+            account_pin = personal_details.cell(account_details.row, 5).value
+            if account_pin != pin:
                 raise ValueError("\n Incorrect PIN.\n")
             os.system('clear')
             after_login(account_number)
@@ -82,7 +81,6 @@ def login():
         except ValueError as ve:
             print(ve)
             login_escape()
-
 
 def login_escape():
     """
@@ -428,29 +426,16 @@ def change_details(account_number, detail):
                     print("Invalid option. Choose only 1 or 2.")
 
 
-def hash_pin(pin):
-    """
-    used to perform password-encoding to store secure
-    """
-    encoded_pin = pin.encode('utf-8')
-    hashed_pin = bcrypt.hashpw(encoded_pin, SALT)
-    print(hashed_pin)
-    return str(hashed_pin)
-    
-
-
 def input_pin():
     """
     accept user input fot ATM pin and validate it
     """
     while True:
         pin = input("\n Choose a 4 digit Pin Number : ")
-        if not pin.strip() or \
-            not pin.isdigit() or \
-                len(pin) != 4:
+        if not pin.strip() or not pin.isdigit() or len(pin) != 4:
             print("Invalid PIN number. Enter a 4-digit number.\n")
         else:
-            return hash_pin(pin)
+            return pin
 
 
 def input_name():
@@ -745,5 +730,5 @@ def call_update_details(account_number):
             print("Invalid option. Choose only from 1 to 6.")
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     main()
