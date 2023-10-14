@@ -6,7 +6,6 @@ from google.oauth2.service_account import Credentials
 from tabulate import tabulate
 import sys
 import time
-import bcrypt
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
