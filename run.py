@@ -18,7 +18,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('atm-automation')
 personal_details = SHEET.worksheet('personal_details')
 statement = SHEET.worksheet('statement')
-SALT = bcrypt.gensalt()
 
 
 def typewriter_effect(text):
