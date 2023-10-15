@@ -137,15 +137,60 @@ If the customer wishes to perform additional transactions after completing a dep
 
         If the withdrawal amount is not in multiples of 5 or exceeds the available balance, the system displays a message: "Insufficient Balance" and shows the current account balance to inform the customer.
 
+        Additionally, it provides the customer with the following options:
+
+        1. Perform Another Transaction
+        2. Exit
+
     
 ![Deposit Confirmation](assets/readme_images/withdrowal.png)
 
 - Balance Enquiry: Customers can check the current balance in their account.
 
+    When a customer selects the "Balance Enquiry" option, the ATM system retrieves the data from the database and displays the current account balance on the screen. Additionally, it provides the customer with the following options:
+    1. Perform Another Transaction
+    2. Exit
+
+    ![Balance Enquiry](assets/readme_images/balance_enquiry.png)
+
 - Statement: This option provides access to account statements, showing recent transactions and account activity.
 
+    Additionally, it provides the customer with the following options:
+    1. Perform Another Transaction
+    2. Exit 
+
+    ![Statement](assets/readme_images/statement.png)
 - Change PIN: Customers can change their ATM PIN for security purposes.
+
+    In the "Change PIN" option, the system follows these steps:
+    1. The customer inputs their desired new PIN and confirm they need to update the PIN.
+    2. The system processes the new PIN entry and updates the customer's stored PIN with the new one.
+    3. After the PIN update is successful, the system displays a message confirming the change, such as "PIN Update Successful."
+    4. Additionally, as always it provides the customer with the following options, but in this case the options is slightly changed to the following:
+        1. Review details
+        2. Exit 
+        
+    ![Statement](assets/readme_images/change_pin.png)
 
 - View Personal Details: This option allows customers to review and verify their personal information on record.
 
-These options offer a comprehensive range of banking services for existing users, making it convenient for them to manage their accounts and conduct various transactions through the ATM.
+     the "View Personal Details" section, customers can access it from three main sections: the "After Login" page, the "Change PIN" section, and the "Edit Personal Details" section, which is a subsection of the personal details section in the "After Login" page. Here's how it works:
+
+1. Access from the After Login Page:
+
+    When accessing this section from the "After Login" page, the customer can view their personal details. The system retrieves all personal details from the database and displays them on the screen.
+    After viewing their details, the system offers two options:
+        
+    - Edit Personal Details: If the customer wishes to update or modify any personal information, they can choose this option.
+    - Exit: If the customer has finished viewing their details and wants to exit, they can select the "Exit" option.
+
+2. Access from the Change PIN Section:
+
+    Customers can access the "View Personal Details" section from the "Change PIN" section, as it is a related section within the ATM interface.
+3. Access from the Edit Personal Details Section:
+
+    This section can also be accessed directly from the "Edit Personal Details" subsection within the personal details section of the "After Login" page.
+
+    In all three cases, the "View Personal Details" section provides customers with the ability to review their personal information, with options to edit details or exit the ATM interface as needed.
+
+    ![Statement](assets/readme_images/personal_details.png)
