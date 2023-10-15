@@ -2,7 +2,7 @@
 
 The live link can be found here - [ATM Automation](https://atm-automation-56428b57995b.herokuapp.com/)
 
-
+![ScreenShot](assets/readme_images/welcome_screen.png)
 
 The ATM Automation Project in Python is a testament to the power of automation in simplifying and enhancing the banking experience. It offers users a secure and efficient way to manage their accounts and perform financial transactions, reflecting the continuous evolution of technology in the banking industry. This project showcases the potential for Python to create versatile and user-friendly applications in the field of finance.
 
@@ -75,6 +75,77 @@ As this program was built for the terminal, there wasn't much in terms of design
 
 A well-designed flowchart for an ATM software project helps developers, testers, and stakeholders understand the system's functionality, interactions, and decision points, ensuring the smooth operation of the ATM and a positive user experience. The flowchart is given below.
 
-
+![Flowchart](assets/readme_images/atm_flow_chart.webp)
 
 [Back to Table of Contents](#table-of-contents)
+
+## Features
+
+### Welcome screen
+  
+
+- In this ATM machine software project, there is a welcome screen that greets the customer and provides instructions on how to proceed with transactions. The welcome screen typically displays a welcoming message and offers two options: "Login" for existing customers and "Create Account" for new customers
+
+![Welcome Screen/Page](assets/readme_images/welcome_screen.png)   
+
+### Create Account
+
+  If the customer is a new user, they will find the "Create Account" option on the welcome screen. When this option is chosen, the customer is required to provide personal details, including their name, address, mobile number, and email, as part of the account creation process. Additionally, for security purposes, the ATM will collect the address proof.
+
+The ATM system generates a unique account number for the new user, and the customer is given the freedom to choose their own personal identification number (PIN) to facilitate future transactions.
+
+  ![Create Account](assets/readme_images/create_account.png)
+
+  After the account creation process is successfully completed, the system will display a confirmation message indicating the success of the process. It will also present the system-generated account number and the customer's chosen ATM PIN. Furthermore, the system will provide clear instructions for the customer to save these details for future transactions. This step ensures that the customer has the necessary information to access their account and conduct ATM transactions securely.
+
+  After this message, the system give two options to the customer:
+
+- Login: This option allows the customer to easily access their account and proceed with ATM transactions.
+- Exit: If the customer chooses this option, they can exit the system without proceeding further.
+
+These options provide the customer with the flexibility to either log in and use the ATM or exit the system as needed.
+
+  ![Successful Message](assets/readme_images/successfull_message.png)
+
+### Login
+
+  If the user is an existing customer, they can log in using their account number and PIN, which they already possess. After successfully logging in, they can access and perform various options, including:
+
+  ![After Login](assets/readme_images/after_login.png)
+
+- Deposit: This option allows the customer to deposit funds into their account. When a customer selects the "Deposit" option, the ATM system initiates a process for cash deposit. Here's how it works:
+
+![Deposit Number Of Notes](assets/readme_images/deposit_num_notes.png)
+
+1. The customer is prompted to enter the number of notes of each denomination they are depositing. The system will ask for the quantity of each note type 
+ 2. The ATM system calculates the total deposit amount by multiplying the quantity of each note by its denomination and then summing these values. This total amount is displayed for verification.
+3. Upon confirmation of the total amount, the system updates the customer's account statement, recording the deposit amount, and date of the transaction.
+4. A deposit confirmation is provided to the customer.
+
+This process ensures that the customer's account is accurately credited with the deposited amount, and a record of the transaction is maintained in their account statement for future reference.
+
+
+If the customer wishes to perform additional transactions after completing a deposit and receiving the confirmation, the system will provide them with the option to do so. Upon choosing to perform more transactions, the system will guide them back to the after-login page, allowing them to access the main menu where they can select and initiate another transaction or take any other desired action, ensuring a seamless and efficient banking experience.
+
+![Deposit Confirmation](assets/readme_images/deposit_confirm.png)
+
+- Withdraw: Customers can withdraw cash from their account. In the "Withdraw" section, the customer is instructed to enter the withdrawal amount in multiples of 5, as the ATM dispenses only notes, not coins. Here's how the process works:
+
+    1. The customer inputs the desired withdrawal amount, ensuring that it is in 
+    2. The ATM system checks whether the requested withdrawal amount is less than or equal to the available account balance.
+    3. If the withdrawal amount is both in multiples of 5 and within the available balance, the system proceeds with the withdrawal.
+
+        If the withdrawal amount is not in multiples of 5 or exceeds the available balance, the system displays a message: "Insufficient Balance" and shows the current account balance to inform the customer.
+
+    
+![Deposit Confirmation](assets/readme_images/withdrowal.png)
+
+- Balance Enquiry: Customers can check the current balance in their account.
+
+- Statement: This option provides access to account statements, showing recent transactions and account activity.
+
+- Change PIN: Customers can change their ATM PIN for security purposes.
+
+- View Personal Details: This option allows customers to review and verify their personal information on record.
+
+These options offer a comprehensive range of banking services for existing users, making it convenient for them to manage their accounts and conduct various transactions through the ATM.
