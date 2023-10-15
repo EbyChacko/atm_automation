@@ -70,6 +70,9 @@ The user experience at the ATM is designed to be efficient, secure, and hassle-f
 
 As this program was built for the terminal, there wasn't much in terms of design or colour. 
 
+- __Type Writer Effect__
+
+Since this system operates solely within a terminal environment, there are limited opportunities for complex visual design. To enhance the user experience, I've implemented a typewriter effect for text presentation on the screen. This effect is primarily used for headings and important results, ensuring a balance between engaging presentation and efficient use of time.
 
 ## Flowchart
 
@@ -194,3 +197,17 @@ If the customer wishes to perform additional transactions after completing a dep
     In all three cases, the "View Personal Details" section provides customers with the ability to review their personal information, with options to edit details or exit the ATM interface as needed.
 
     ![Statement](assets/readme_images/personal_details.png)
+
+    - Update Personal Details :
+    
+        The option to edit personal details, as a sub-feature of the personal details section, provides customers with the ability to independently update their information. Customers can change their address, mobile number, or update their address proof as needed, enhancing their autonomy and ensuring that their personal information remains accurate and up-to-date. This feature adds convenience and flexibility to the ATM system, allowing customers to manage their account information seamlessly.
+
+    ![Statement](assets/readme_images/update_details.png)
+
+    ## Unimplemented Features
+
+    Since this system is an ATM and primarily deals with cash transactions, security is of paramount importance. To enhance security, I initially attempted to encrypt the ATM PIN using the "bcrypt" module. However, I encountered an error, specifically the "invalid salt" error, despite multiple attempts to resolve it. Consequently, I made the decision to discontinue the use of this encryption method.
+    
+    The encryption process was functioning as intended. However, when verifying the PIN during the login process, an "invalid salt" error is being displayed.
+
+    ![Statement](assets/readme_images/Error_invalid_salt.png)
