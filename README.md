@@ -87,7 +87,6 @@ A well-designed flowchart for an ATM software project helps developers, testers,
 
 ### Welcome screen
   
-
 - In this ATM machine software project, there is a welcome screen that greets the customer and provides instructions on how to proceed with transactions. The welcome screen typically displays a welcoming message and offers two options: "Login" for existing customers and "Create Account" for new customers
 
 ![Welcome Screen/Page](assets/readme_images/welcome_screen.png)   
@@ -146,8 +145,7 @@ If the customer wishes to perform additional transactions after completing a dep
         1. Perform Another Transaction
         2. Exit
 
-    
-![Deposit Confirmation](assets/readme_images/withdrowal.png)
+![Withdrowal](assets/readme_images/withdrowal.png)
 
 - Balance Enquiry: Customers can check the current balance in their account.
 
@@ -174,7 +172,7 @@ If the customer wishes to perform additional transactions after completing a dep
         1. Review details
         2. Exit 
         
-    ![Statement](assets/readme_images/change_pin.png)
+    ![Change PIN](assets/readme_images/change_pin.png)
 
 - View Personal Details: This option allows customers to review and verify their personal information on record.
 
@@ -197,27 +195,34 @@ If the customer wishes to perform additional transactions after completing a dep
 
     In all three cases, the "View Personal Details" section provides customers with the ability to review their personal information, with options to edit details or exit the ATM interface as needed.
 
-    ![Statement](assets/readme_images/personal_details.png)
+    ![Personal Details](assets/readme_images/personal_details.png)
 
     - Update Personal Details :
     
         The option to edit personal details, as a sub-feature of the personal details section, provides customers with the ability to independently update their information. Customers can change their address, mobile number, or update their address proof as needed, enhancing their autonomy and ensuring that their personal information remains accurate and up-to-date. This feature adds convenience and flexibility to the ATM system, allowing customers to manage their account information seamlessly.
 
-    ![Statement](assets/readme_images/update_details.png)
+    ![Update Details](assets/readme_images/update_details.png)
 
     [Back to Table of Contents](#table-of-contents)
 
     ## Unimplemented Features
 
-    Since this system is an ATM and primarily deals with cash transactions, security is of paramount importance. To enhance security, I initially attempted to encrypt the ATM PIN using the "bcrypt" module. However, I encountered an error, specifically the "invalid salt" error, despite multiple attempts to resolve it. Consequently, I made the decision to discontinue the use of this encryption method.
-    
-    The encryption process was functioning as intended. However, when verifying the PIN during the login process, an "invalid salt" error is being displayed.
+### __1. bcrypt Module for ATM Pin Encoding__
 
-    ![Statement](assets/readme_images/Error_invalid_salt.png)
+Since this system is an ATM and primarily deals with cash transactions, security is of paramount importance. To enhance security, I initially attempted to encrypt the ATM PIN using the "bcrypt" module. However, I encountered an error, specifically the "invalid salt" error, despite multiple attempts to resolve it. Consequently, I made the decision to discontinue the use of this encryption method.
+    
+The encryption process was functioning as intended. However, when verifying the PIN during the login process, an "invalid salt" error is being displayed.
+
+![Invalid Salt Error](assets/readme_images/Error_invalid_salt.png)
+
+### __2. pyttsx3 module for announcements__ 
+
+
+In the ATM system, it is common for users to receive audible announcements or instructions as they input their selections. I attempted to implement this feature by importing the "pyttsx3" module. However, I encountered errors during the implementation process, and after multiple attempts to resolve them, I decided to discontinue the use of this module.
 
 [Back to Table of Contents](#table-of-contents)
 
-### __Technologies Used__
+## __Technologies Used__
 
 The following is a list of the technologies I used on this project.
 
@@ -265,5 +270,92 @@ Each of these technologies plays a specific role in the project's development an
 - [sys](https://docs.python.org/3/library/sys.html) is used to control the output behavior of the program. Specifically, it is used to print text letter by letter, creating a typewriter-like effect that can enhance user engagement.
 - [gspread](https://docs.gspread.org/en/v5.7.0/) facilitates the connection between the program and Google Sheets. It enables reading and updating data on a Google Sheets document, making it an effective tool for managing and syncing data.
 
+[Back to Table of Contents](#table-of-contents)
+
+## Bugs
+
+| **Bug** | **Solution** |
+| --- | --- |
+| When a customer selects the "Login" option and fails to log in due to an incorrect account number or PIN, they may find themselves stuck because the login function operates in a loop with no clear escape option. | I created a function called "escape" that provides the user with the option to either retry their login, create a new account, or exit the system. |
+| When a ValueError occurs in the login function, the error report was previously being displayed from the main function rather than within the login function.  | Improved the error handling in the login page by appropriate 'try' and 'except' blocks. Additionally, I used the else condition within the if-elif statement to provide more accurate error reporting and better manage exceptions within the login process.|
+| After implementing "pyttsx3," and deleted the same because of error, I noticed that the requirements.txt file contained unnecessary or unwanted entries, and as a result, the deployed function was encountering errors rather than functioning as expected. | I deleted the existing requirements.txt file and then recreated it again. then by using the command "pip3 freeze > requirements.txt." fixed the issue and ensured a cleaner and more accurate requirements.txt file for the project. |
+
+
+### Unfixed Bugs 
+
+- If the personal details in the Google Sheet are empty, the system was displaying an error. Unfortunately, I couldn't find a resolution for this issue. The only workaround I discovered was to always maintain at least one row of data in the personal details sheet, which seemed to prevent the error from occurring.
+
+ ![Error when no data in personal details](assets/readme_images/error_when_no_personal_details.png)
 
 [Back to Table of Contents](#table-of-contents)
+
+## Deployment
+
+### Version Control
+The site was created using the Visual Studio code editor and pushed to github to the remote repository ‘ATM- Automation’.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+- git add <file> - This command was used to add the file(s) to the staging area before they are committed.
+
+- git commit -m “commit message” - This command was used to commit changes to the local repository queue ready for the final step.
+
+- git push - This command was used to push all committed code to the remote repository on github.
+
+### Heroku Deployment
+
+This project uses [Heroku](https://dashboard.heroku.com/apps/atm-automation), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select *New* in the top-right corner of your Heroku Dashboard, and select *Create new app* from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select *Create App*.
+- From the new app *Settings*, click *Reveal Config Vars*, and set the value of KEY to `PORT`, and the value to `8000` then select *add*.
+- Further down, to support dependencies, select *Add Buildpack*.
+- The order of the buildpacks is important, select `Python` first, then `Node.js` second. (if they are not in this order, you can drag them to rearrange them)
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`. If you have your own packages that have been installed, then the requirements file needs updated using: `pip3 freeze --local > requirements.txt`
+
+The Procfile can be created with the following command: `echo web: node index.js > Procfile`
+
+For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a <app_name>` (replace app_name with your app, without the angle-brackets)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type: `git push heroku main`
+
+The frontend terminal should now be connected and deployed to Heroku.
+
+### Clone the Repository Code Locally
+- Navigate to the GitHub Repository you want to clone to use locally:
+  - Click on the code drop down button
+  - Click on HTTPS
+  - Copy the repository link to the clipboard
+  - Open your IDE of choice (git must be installed for the next steps)
+  - Type git clone copied-git-url into the IDE terminal
+  - The project will now of been cloned on your local machine for use.
+
+[Back to Table of Contents](#table-of-contents)
+
+## Credits 
+
+Here we credit everywhere we have got content for the website and any code that was taken from other sources.
+
+### Code 
+
+- The code for clearing the terminal was got from [stack overflow](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
+- The code for Type writer effect was got from [stack overflow](https://stackoverflow.com/questions/4099422/printing-slowly-simulate-typing) and perplexity.ai
+- The code for connecting to google sheets was got from [code institute](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/)
+
+### __Design__
+- Flowchart was made using [app.diagrams.net](https://app.diagrams.net/)
+
+## __Acknowledgements__
+I would like to give special thanks to my mentor, [Graeme Taylor](linkedin.com/in/g--taylor) for his guidance during the development of this project.
+
+
+[Back to Table of Contents](#table-of-contents) 
