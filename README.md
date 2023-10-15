@@ -18,6 +18,7 @@ The ATM Automation Project in Python is a robust and user-friendly system design
 - [User Experience](#user-experience)
 - [Design](#design)
 - [Features](#features)
+- [Un-Implemented Features](#unimplemented-features)
 - [Technologies](#technologies-used)
 - [Testing](#testing)
 - [Bugs](#bugs)
@@ -204,6 +205,8 @@ If the customer wishes to perform additional transactions after completing a dep
 
     ![Statement](assets/readme_images/update_details.png)
 
+    [Back to Table of Contents](#table-of-contents)
+
     ## Unimplemented Features
 
     Since this system is an ATM and primarily deals with cash transactions, security is of paramount importance. To enhance security, I initially attempted to encrypt the ATM PIN using the "bcrypt" module. However, I encountered an error, specifically the "invalid salt" error, despite multiple attempts to resolve it. Consequently, I made the decision to discontinue the use of this encryption method.
@@ -211,3 +214,56 @@ If the customer wishes to perform additional transactions after completing a dep
     The encryption process was functioning as intended. However, when verifying the PIN during the login process, an "invalid salt" error is being displayed.
 
     ![Statement](assets/readme_images/Error_invalid_salt.png)
+
+[Back to Table of Contents](#table-of-contents)
+
+### __Technologies Used__
+
+The following is a list of the technologies I used on this project.
+
+1. Python:
+
+Python is the primary programming language used to develop the ATM software. It is a versatile language known for its simplicity and readability.
+
+2. HTML:
+
+HTML is utilized for structuring and rendering web pages. It may be employed for creating web-based interfaces or for documentation purposes.
+
+3. JavaScript:
+
+JavaScript is employed to power the Code Institute mock terminal, adding interactivity and functionality to the web-based interface.
+
+4. Google Sheets:
+
+Google Sheets is used as a data storage and management tool. It allows for organized data storage and retrieval, particularly for user accounts and transaction history.
+
+5. Google Cloud:
+
+Google Cloud provides the necessary APIs for various functions within the project.
+
+6. GitHub:
+
+GitHub is a version control platform used to host and manage the project's source code. It facilitates collaboration among team members and enables version tracking and project history.
+
+7. VS Code:
+
+Visual Studio Code serves as the integrated development environment (IDE) for coding and managing the project. It offers a range of developer tools and extensions to aid in code writing and debugging.
+
+8. Git:
+
+Git is a distributed version control system that is employed to manage code changes, track revisions, and collaborate on software development. It works in conjunction with Git repositories on platforms like GitHub.
+
+Each of these technologies plays a specific role in the project's development and execution, contributing to the successful operation of the ATM software system.
+
+[Back to Table of Contents](#table-of-contents)
+
+### __Imported Libraries and Packages Used__
+
+- [tabulate](https://pypi.org/project/tabulate/) is used to create structured and visually appealing tables for presenting information, such as statements, in a user-friendly format.
+- [os](https://docs.python.org/3/library/os.html)  library is utilized to implement a clear_screen function. This function enhances the user experience by clearing the terminal screen, reducing clutter, and making interactions more straightforward.
+- [re](https://docs.python.org/3/library/re.html) library is employed to perform regular expression matching and validation. In this project, it is used to check the input format for dates, ensuring that they adhere to a specific pattern.
+- [sys](https://docs.python.org/3/library/sys.html) is used to control the output behavior of the program. Specifically, it is used to print text letter by letter, creating a typewriter-like effect that can enhance user engagement.
+- [gspread](https://docs.gspread.org/en/v5.7.0/) facilitates the connection between the program and Google Sheets. It enables reading and updating data on a Google Sheets document, making it an effective tool for managing and syncing data.
+
+
+[Back to Table of Contents](#table-of-contents)
