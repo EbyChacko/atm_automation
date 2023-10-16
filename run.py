@@ -319,6 +319,7 @@ def perform_deposit(account_number, total_amount):
     row_statement = [account_number, deposit_date, "Deposit", "0",
                      total_amount, balance]
     statement.append_row(row_statement)
+    os.system('clear')
     typewriter_effect("Transaction is processing... Please wait\n")
     typewriter_effect("Transaction compleated.\n")
     print(f"\n AVAILABLE BALANCE : €{balance}")
