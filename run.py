@@ -432,6 +432,7 @@ def change_details(account_number, detail):
                             personal_details.update_cell(row_index,
                                                          column_index,
                                                          new_detail)
+                        os.system('clear')
                         typewriter_effect(f" Updating your {detail}...")
                         typewriter_effect(f" Please wait\n")
                         typewriter_effect(f" Updation Successfull\n")
@@ -555,7 +556,7 @@ def review_detail(account_number):
         print("\n Do you want to Review your personal details?")
         print(" 1. Review Details")
         print(" 2. Cancel")
-        print(" 2. Exit")
+        print(" 3. Exit")
         option = input("-->> : ")
         try:
             option = int(option)
