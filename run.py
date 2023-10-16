@@ -174,10 +174,10 @@ def number_of_notes(note):
     """
     while True:
         num = input(f"\n Enter the Number of {note} euro Notes : ")
-        if not num.isdigit() and int(num) < 0:
-            print("\n Please enter a positive number.")
-        else:
+        if num.isdigit() and int(num) > 0:
             return num
+        else:
+            print("\n Please enter a positive number.")
 
 
 def deposit(account_number):
@@ -204,7 +204,8 @@ def deposit(account_number):
         print(" 6. 10 euro Notes")
         print(" 7. 5 euro Notes")
         print(" 8. Proceed Deposit")
-        print(" 9. Exit")
+        print(" 9. Back")
+        print(" 10. Exit")
         option = input("-->> ")
         try:
             option = int(option)
@@ -252,9 +253,13 @@ def deposit(account_number):
                         confirm_or_re_enter(account_number, total_amount)
                 break
             elif option == 9:
+                after_login(account_number)
+            elif option == 10:
                 main()
+            else :
+                print("\n Invalid option. Choose options from 1 to 10 only.")
         except ValueError as ve:
-            print("\n Invalid option. Choose options from 1 to 9 only.")
+            print("\n Invalid option. Choose options from 1 to 10 only.")
 
 
 def calc_amount(num_list, note_list):
@@ -284,8 +289,10 @@ def confirm_or_re_enter(account_number, total_amount):
                 os.system('clear')
                 deposit(account_number)
                 break
+            else:
+                print("\n Invalid option. Choose only 1 or 2.")
         except ValueError as ve:
-            print("\n Invalid option. Please choose only 1 or 2.")
+            print("\n Invalid option. Choose only 1 or 2.")
 
 
 def perform_deposit(account_number, total_amount):
@@ -677,7 +684,7 @@ def show_personal_details(account_number):
     while True:
         print("\n Do you want to edit the details")
         print(" 1. Edit")
-        print(" 2. Cancel")
+        print(" 2. Exit")
         option = input("-->> : ")
         try:
             option = int(option)
@@ -724,7 +731,7 @@ def call_update_details(account_number):
                 change_details(account_number, "Address Proof")
             elif option == 6:
                 os.system('clear')
-                main()
+                after_login(account_number)
             else:
                 print("Invalid option. Choose only from 1 to 6.")
         except ValueError as ve:

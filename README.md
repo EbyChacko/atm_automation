@@ -8,9 +8,13 @@ The ATM Automation Project in Python is a testament to the power of automation i
 
 (Developer: Eby Chacko)
 
+___
+
 ## Introduction
 
 The ATM Automation Project in Python is a robust and user-friendly system designed to automate various functions of an Automated Teller Machine (ATM). This project leverages Python programming to create a virtual ATM system that mimics the functionality of a real-world ATM. It offers a secure and convenient way for users to perform banking transactions, check balances, withdraw cash, and more.
+
+___
 
 ## Table of Contents
 
@@ -25,6 +29,8 @@ The ATM Automation Project in Python is a robust and user-friendly system design
 - [Deployment](#deployment)
 - [Clone the Repository Code Locally](#clone-the-repository-code-locally)
 - [Credits](#credits)
+
+___
 
 ## Project Goals
 
@@ -48,6 +54,8 @@ The goal of the ATM Automation Project is to design, develop, and implement a co
 
 [Back to Table of Contents](#table-of-contents)
 
+___
+
 ## User Experience
 
 - __Target Audience__
@@ -65,6 +73,8 @@ The user experience at the ATM is designed to be efficient, secure, and hassle-f
 
 [Back to Table of Contents](#table-of-contents)
 
+___
+
 ## Design
 
 - __Design Choices__
@@ -75,6 +85,8 @@ As this program was built for the terminal, there wasn't much in terms of design
 
 Since this system operates solely within a terminal environment, there are limited opportunities for complex visual design. To enhance the user experience, I've implemented a typewriter effect for text presentation on the screen. This effect is primarily used for headings and important results, ensuring a balance between engaging presentation and efficient use of time.
 
+___
+
 ## Flowchart
 
 A well-designed flowchart for an ATM software project helps developers, testers, and stakeholders understand the system's functionality, interactions, and decision points, ensuring the smooth operation of the ATM and a positive user experience. The flowchart is given below.
@@ -83,6 +95,8 @@ A well-designed flowchart for an ATM software project helps developers, testers,
 
 [Back to Table of Contents](#table-of-contents)
 
+___
+
 ## Features
 
 ### Welcome screen
@@ -90,6 +104,7 @@ A well-designed flowchart for an ATM software project helps developers, testers,
 - In this ATM machine software project, there is a welcome screen that greets the customer and provides instructions on how to proceed with transactions. The welcome screen typically displays a welcoming message and offers two options: "Login" for existing customers and "Create Account" for new customers
 
 ![Welcome Screen/Page](assets/readme_images/welcome_screen.png)   
+
 
 ### Create Account
 
@@ -205,7 +220,9 @@ If the customer wishes to perform additional transactions after completing a dep
 
 [Back to Table of Contents](#table-of-contents)
 
-## Un-implemented Features
+___
+
+## Unimplemented Features
 
 ### __1. bcrypt Module for ATM Pin Encoding__
 
@@ -221,6 +238,8 @@ The encryption process was functioning as intended. However, when verifying the 
 In the ATM system, it is common for users to receive audible announcements or instructions as they input their selections. I attempted to implement this feature by importing the "pyttsx3" module. However, I encountered errors during the implementation process, and after multiple attempts to resolve them, I decided to discontinue the use of this module.
 
 [Back to Table of Contents](#table-of-contents)
+
+___
 
 ## __Technologies Used__
 
@@ -262,6 +281,8 @@ Each of these technologies plays a specific role in the project's development an
 
 [Back to Table of Contents](#table-of-contents)
 
+___
+
 ### __Imported Libraries and Packages Used__
 
 - [tabulate](https://pypi.org/project/tabulate/) is used to create structured and visually appealing tables for presenting information, such as statements, in a user-friendly format.
@@ -272,12 +293,16 @@ Each of these technologies plays a specific role in the project's development an
 
 [Back to Table of Contents](#table-of-contents)
 
+___
+
 ## Testing 
 
 View Testing and Validation [here.](assets/testing.md)
 
 
 [Back to Table of Contents](#table-of-contents)
+
+___
 
 ## Bugs
 
@@ -295,6 +320,8 @@ View Testing and Validation [here.](assets/testing.md)
  ![Error when no data in personal details](assets/readme_images/error_when_no_personal_details.png)
 
 [Back to Table of Contents](#table-of-contents)
+
+___
 
 ## Deployment
 
@@ -337,6 +364,8 @@ For Heroku deployment, follow these steps to connect your GitHub repository to t
 
 The frontend terminal should now be connected and deployed to Heroku.
 
+___
+
 ## Clone the Repository Code Locally
 - Navigate to the GitHub Repository you want to clone to use locally:
   - Click on the code drop down button
@@ -347,6 +376,8 @@ The frontend terminal should now be connected and deployed to Heroku.
   - The project will now of been cloned on your local machine for use.
 
 [Back to Table of Contents](#table-of-contents)
+
+___
 
 ## Credits 
 
@@ -360,6 +391,8 @@ Here we credit everywhere we have got content for the website and any code that 
 
 ### __Design__
 - Flowchart was made using [app.diagrams.net](https://app.diagrams.net/)
+
+___
 
 ## __Acknowledgements__
 I would like to give special thanks to my mentor, [Graeme Taylor](linkedin.com/in/g--taylor) for his guidance during the development of this project.
