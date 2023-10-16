@@ -358,6 +358,7 @@ def withdrawal(account_number):
                     row_statement = [account_number, deposit_date,
                                      "Withdrow", withdrow_amount, "0", balance]
                     statement.append_row(row_statement)
+                    os.system('clear')
                     typewriter_effect("Transaction is processing... ")
                     typewriter_effect("Please wait\n")
                     typewriter_effect("Transaction compleated. ")
