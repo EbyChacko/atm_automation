@@ -52,8 +52,8 @@ def main():
                 os.system('clear')
                 create_account()
                 break
-        except ValueError as ve:
-            print(" \nInvalid option. Please choose only 1 or 2.")
+        except ValueError :
+            main()
 
 
 def login():
@@ -79,6 +79,7 @@ def login():
         except ValueError as ve:
             print(ve)
             login_escape()
+
 
 def login_escape():
     """
@@ -161,6 +162,8 @@ def after_login(account_number):
             elif option == 7:
                 os.system('clear')
                 main()
+            else:
+                print("\n Invalid option. Choose options from 1 to 7 only.")
         except ValueError as ve:
             print("\n Invalid option. Choose options from 1 to 7 only.")
 

@@ -19,7 +19,7 @@ The ATM Automation Project in Python is a robust and user-friendly system design
 - [Design](#design)
 - [Features](#features)
 - [Un-Implemented Features](#unimplemented-features)
-- [Technologies](#technologies-used)
+- [Technologies Used](#technologies-used)
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Deployment](#deployment)
@@ -46,7 +46,7 @@ The goal of the ATM Automation Project is to design, develop, and implement a co
   - Error Handling: Develop a robust error-handling system to address common transaction errors, ensuring a smooth and error-free user experience.
   - Cost Efficiency: Optimize the operational costs associated with ATM maintenance, security, and cash management.
 
-  [Back to Table of Contents](#table-of-contents)
+[Back to Table of Contents](#table-of-contents)
 
 ## User Experience
 
@@ -97,7 +97,7 @@ A well-designed flowchart for an ATM software project helps developers, testers,
 
 The ATM system generates a unique account number for the new user, and the customer is given the freedom to choose their own personal identification number (PIN) to facilitate future transactions.
 
-  ![Create Account](assets/readme_images/create_account.png)
+![Create Account](assets/readme_images/create_account.png)
 
   After the account creation process is successfully completed, the system will display a confirmation message indicating the success of the process. It will also present the system-generated account number and the customer's chosen ATM PIN. Furthermore, the system will provide clear instructions for the customer to save these details for future transactions. This step ensures that the customer has the necessary information to access their account and conduct ATM transactions securely.
 
@@ -108,13 +108,13 @@ The ATM system generates a unique account number for the new user, and the custo
 
 These options provide the customer with the flexibility to either log in and use the ATM or exit the system as needed.
 
-  ![Successful Message](assets/readme_images/successfull_message.png)
+![Successful Message](assets/readme_images/successfull_message.png)
 
 ### Login
 
   If the user is an existing customer, they can log in using their account number and PIN, which they already possess. After successfully logging in, they can access and perform various options, including:
 
-  ![After Login](assets/readme_images/after_login.png)
+![After Login](assets/readme_images/after_login.png)
 
 - Deposit: This option allows the customer to deposit funds into their account. When a customer selects the "Deposit" option, the ATM system initiates a process for cash deposit. Here's how it works:
 
@@ -153,7 +153,7 @@ If the customer wishes to perform additional transactions after completing a dep
     1. Perform Another Transaction
     2. Exit
 
-    ![Balance Enquiry](assets/readme_images/balance_enquiry.png)
+![Balance Enquiry](assets/readme_images/balance_enquiry.png)
 
 - Statement: This option provides access to account statements, showing recent transactions and account activity.
 
@@ -161,7 +161,7 @@ If the customer wishes to perform additional transactions after completing a dep
     1. Perform Another Transaction
     2. Exit 
 
-    ![Statement](assets/readme_images/statement.png)
+![Statement](assets/readme_images/statement.png)
 - Change PIN: Customers can change their ATM PIN for security purposes.
 
     In the "Change PIN" option, the system follows these steps:
@@ -172,7 +172,7 @@ If the customer wishes to perform additional transactions after completing a dep
         1. Review details
         2. Exit 
         
-    ![Change PIN](assets/readme_images/change_pin.png)
+![Change PIN](assets/readme_images/change_pin.png)
 
 - View Personal Details: This option allows customers to review and verify their personal information on record.
 
@@ -195,17 +195,17 @@ If the customer wishes to perform additional transactions after completing a dep
 
     In all three cases, the "View Personal Details" section provides customers with the ability to review their personal information, with options to edit details or exit the ATM interface as needed.
 
-    ![Personal Details](assets/readme_images/personal_details.png)
+![Personal Details](assets/readme_images/personal_details.png)
 
-    - Update Personal Details :
+- Update Personal Details :
     
-        The option to edit personal details, as a sub-feature of the personal details section, provides customers with the ability to independently update their information. Customers can change their address, mobile number, or update their address proof as needed, enhancing their autonomy and ensuring that their personal information remains accurate and up-to-date. This feature adds convenience and flexibility to the ATM system, allowing customers to manage their account information seamlessly.
+    The option to edit personal details, as a sub-feature of the personal details section, provides customers with the ability to independently update their information. Customers can change their address, mobile number, or update their address proof as needed, enhancing their autonomy and ensuring that their personal information remains accurate and up-to-date. This feature adds convenience and flexibility to the ATM system, allowing customers to manage their account information seamlessly.
 
-    ![Update Details](assets/readme_images/update_details.png)
+![Update Details](assets/readme_images/update_details.png)
 
-    [Back to Table of Contents](#table-of-contents)
+[Back to Table of Contents](#table-of-contents)
 
-    ## Unimplemented Features
+## Un-implemented Features
 
 ### __1. bcrypt Module for ATM Pin Encoding__
 
@@ -272,6 +272,13 @@ Each of these technologies plays a specific role in the project's development an
 
 [Back to Table of Contents](#table-of-contents)
 
+## Testing 
+
+View Testing and Validation [here.](assets/testing.md)
+
+
+[Back to Table of Contents](#table-of-contents)
+
 ## Bugs
 
 | **Bug** | **Solution** |
@@ -330,7 +337,7 @@ For Heroku deployment, follow these steps to connect your GitHub repository to t
 
 The frontend terminal should now be connected and deployed to Heroku.
 
-### Clone the Repository Code Locally
+## Clone the Repository Code Locally
 - Navigate to the GitHub Repository you want to clone to use locally:
   - Click on the code drop down button
   - Click on HTTPS
