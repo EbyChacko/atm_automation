@@ -204,7 +204,7 @@ def deposit(account_number):
         print(" 6. 10 euro Notes")
         print(" 7. 5 euro Notes")
         print(" 8. Proceed Deposit")
-        print(" 9. Back")
+        print(" 9. Cancel")
         print(" 10. Exit")
         option = input("-->> ")
         try:
@@ -544,6 +544,7 @@ def review_detail(account_number):
     while True:
         print("\n Do you want to Review your personal details?")
         print(" 1. Review Details")
+        print(" 2. Cancel")
         print(" 2. Exit")
         option = input("-->> : ")
         try:
@@ -554,12 +555,16 @@ def review_detail(account_number):
                 break
             elif option == 2:
                 os.system('clear')
+                after_login(account_number)
+                break
+            elif option == 3:
+                os.system('clear')
                 main()
                 break
             else:
-                raise ValueError("\n Invalid option. Choose only 1 or 2.")
+                raise ValueError("\n Invalid option. Choose only 1,2 or 3.")
         except ValueError as ve:
-            print("\n Invalid option. Choose only 1 or 2.")
+            print("\n Invalid option. Choose only 1,2 or 3.")
 
 
 def create_account():
@@ -685,6 +690,7 @@ def show_personal_details(account_number):
     while True:
         print("\n Do you want to edit the details")
         print(" 1. Edit")
+        print(" 2. Cancel")
         print(" 2. Exit")
         option = input("-->> : ")
         try:
@@ -697,12 +703,16 @@ def show_personal_details(account_number):
                 break
             elif option == 2:
                 os.system('clear')
+                after_login(account_number)
+                break
+            elif option == 3:
+                os.system('clear')
                 main()
                 break
             else:
-                print("Invalid option. Choose only 1 or 2.")
+                print("Invalid option. Choose only 1, 2 or 3")
         except ValueError as ve:
-            print("Invalid option. Choose only 1 or 2.")
+            print("Invalid option. Choose only 1, 2 or 3")
 
 
 def call_update_details(account_number):
