@@ -22,7 +22,7 @@ ___
 - [User Experience](#user-experience)
 - [Design](#design)
 - [Features](#features)
-- [Un-Implemented Features](#unimplemented-features)
+- [Unimplemented Features](#unimplemented-features)
 - [Technologies Used](#technologies-used)
 - [Testing](#testing)
 - [Bugs](#bugs)
@@ -236,6 +236,14 @@ The encryption process was functioning as intended. However, when verifying the 
 
 
 In the ATM system, it is common for users to receive audible announcements or instructions as they input their selections. I attempted to implement this feature by importing the "pyttsx3" module. However, I encountered errors during the implementation process, and after multiple attempts to resolve them, I decided to discontinue the use of this module.
+
+### __3. Exit after each the transactions__ 
+
+I understand that, traditionally, in an ATM system, it's standard to configure the software to return to the welcome screen after every transaction as a security measure. However, for the sake of user convenience, I've implemented an option that allows users to navigate back to the after-login screen after each transaction, providing a more user-friendly experience.
+
+### __4. Money Transfer between accounts__ 
+
+Due to time constraints, I had to reduce the project's scope. As a result, I made the decision not to implement the functionality for money transfers between accounts.
 
 [Back to Table of Contents](#table-of-contents)
 
