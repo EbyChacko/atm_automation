@@ -354,6 +354,7 @@ def withdrawal(account_number):
                     typewriter_effect("Please wait\n")
                     typewriter_effect("Transaction compleated. ")
                     typewriter_effect("Collect your cash from the tray\n")
+                    print(f"\nAVAILABLE BALANCE : €{balance}")
                     perform_another_transaction(account_number)
                     break
         except ValueError as ve:
