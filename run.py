@@ -702,7 +702,7 @@ def show_personal_details(account_number):
         print("\n Do you want to edit the details")
         print(" 1. Edit")
         print(" 2. Cancel")
-        print(" 2. Exit")
+        print(" 3. Exit")
         option = input("-->> : ")
         try:
             option = int(option)
