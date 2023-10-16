@@ -163,8 +163,10 @@ def after_login(account_number):
                 os.system('clear')
                 main()
             else:
+                os.system('clear')
                 print("\n Invalid option. Choose options from 1 to 7 only.")
         except ValueError as ve:
+            os.system('clear')
             print("\n Invalid option. Choose options from 1 to 7 only.")
 
 
@@ -177,6 +179,7 @@ def number_of_notes(note):
         if num.isdigit() and int(num) > 0:
             return num
         else:
+            os.system('clear')
             print("\n Please enter a positive number.")
 
 
@@ -253,12 +256,16 @@ def deposit(account_number):
                         confirm_or_re_enter(account_number, total_amount)
                 break
             elif option == 9:
+                os.system('clear')
                 after_login(account_number)
             elif option == 10:
+                os.system('clear')
                 main()
             else:
+                os.system('clear')
                 print("\n Invalid option. Choose options from 1 to 10 only.")
         except ValueError as ve:
+            os.system('clear')
             print("\n Invalid option. Choose options from 1 to 10 only.")
 
 
@@ -358,6 +365,7 @@ def withdrawal(account_number):
                     perform_another_transaction(account_number)
                     break
         except ValueError as ve:
+            os.system('clear')
             print("\n Invalid Amount\n")
 
 
