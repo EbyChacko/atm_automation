@@ -52,7 +52,7 @@ def main():
                 os.system('clear')
                 create_account()
                 break
-        except ValueError :
+        except ValueError:
             main()
 
 
@@ -256,7 +256,7 @@ def deposit(account_number):
                 after_login(account_number)
             elif option == 10:
                 main()
-            else :
+            else:
                 print("\n Invalid option. Choose options from 1 to 10 only.")
         except ValueError as ve:
             print("\n Invalid option. Choose options from 1 to 10 only.")
