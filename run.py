@@ -566,12 +566,12 @@ def input_account_number():
         receiver_details = personal_details.find(receiver)
         if not receiver_details:
             os.system('clear')
-            print("\n\nAccount Number Not Found. Please enter a valid account number.")
+            print("\nAccount Number Not Found. Enter a valid account number.")
             continue
         valid_receiver = personal_details.cell(receiver_details.row, 1).value
         if receiver != valid_receiver:
             os.system('clear')
-            print("\n\nAccount Number Not Found. Please enter a valid account number.")
+            print("\nAccount Number Not Found. Enter a valid account number.")
             continue
         return receiver
 
@@ -603,7 +603,8 @@ def transfer_amount(account_number):
             option = int(option)
             if option == 1:
                 os.system('clear')
-                perform_transfer(account_number, reciever, reciever_name, transfer_amount)
+                perform_transfer(account_number, reciever,
+                                 reciever_name, transfer_amount)
                 break
             elif option == 2:
                 os.system('clear')
@@ -638,11 +639,11 @@ def perform_transfer(account_number, reciever, reciever_name, transfer_amount):
         sender_balance -= float(transfer_amount)
         reciever_balance += float(transfer_amount)
         row_sender_statement = [account_number, transaction_date,
-                        "Transfer", transfer_amount,
-                        "0", sender_balance]
+                                "Transfer", transfer_amount,
+                                "0", sender_balance]
         row_reciever_statement = [reciever, transaction_date,
-                        "Transfer", "0",
-                        transfer_amount, reciever_balance]
+                                  "Transfer", "0",
+                                  transfer_amount, reciever_balance]
         statement.append_row(row_sender_statement)
         statement.append_row(row_reciever_statement)
         os.system('clear')
@@ -693,14 +694,15 @@ def create_account():
     typewriter_effect(" FILL OUT THE DETAILS\n")
     typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
-    length =len(all_personal_details)
+    length = len(all_personal_details)
     if length == 0:
-        heading_statement = ["Account Number", "Name", "Address", "Mobile Number",
-                                "Pin Number", "Date of Join", "Email",
-                                "Address Proof Document", "Document Number" ]
+        heading_statement = ["Account Number", "Name", "Address",
+                             "Mobile Number",
+                             "Pin Number", "Date of Join", "Email",
+                             "Address Proof Document", "Document Number"]
         personal_details.append_row(heading_statement)
         account_number = "100001"
-    elif  length == 1:
+    elif length == 1:
         account_number = "100001"
     else:
         last_row = all_personal_details[-1]
