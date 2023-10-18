@@ -123,7 +123,7 @@ def after_login(account_number):
     account_name = personal_details.cell(account_details.row, 2).value
     while True:
         typewriter_effect(f"\n  HELLO {account_name}")
-        typewriter_effect("\n  *-*-*-*-*-*-*-*-*-*-*-*-*\n")
+        typewriter_effect("\n  *-*-*-*-*-*-*-*-*-*-*-*\n")
         print("\n Choose from the following options")
         print("\n 1. Deposit")
         print(" 2. Withdrawal")
@@ -473,7 +473,7 @@ def input_name():
                 not all(char.isalpha() or char.isspace() for char in name):
             print("\n Name cannot be empty & Enter only alphabets and spaces.")
         else:
-            return name
+            return name.upper()
 
 
 def input_address():
