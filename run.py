@@ -387,7 +387,7 @@ def balance_enquiry(account_number, account_name):
         if row[0] == account_number:
             customer_statement.append(row)
     last_transaction = customer_statement[-1]
-    balance = int(last_transaction[5])
+    balance = float(last_transaction[5])
     typewriter_effect(f"\nHello {account_name}")
     typewriter_effect(f"\n\nAVAILABLE BALANCE €{balance}\n\n")
     perform_another_transaction(account_number)
