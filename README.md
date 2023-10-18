@@ -91,7 +91,7 @@ ___
 
 A well-designed flowchart for an ATM software project helps developers, testers, and stakeholders understand the system's functionality, interactions, and decision points, ensuring the smooth operation of the ATM and a positive user experience. The flowchart is given below.
 
-![Flowchart](assets/readme_images/atm_flow_chart.webp)
+![Flowchart](assets/readme_images/flow_chart.webp)
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -324,9 +324,7 @@ ___
 
 ### Unfixed Bugs 
 
-- . Unfortunately, I couldn't find a resolution for this issue. The only workaround I discovered was to always maintain at least one row of data in the personal details sheet, which seemed to prevent the error from occurring.
-
- ![Error when no data in personal details](assets/readme_images/error_when_no_personal_details.png)
+As of now, No Unfixed errors.
 
 [Back to Table of Contents](#table-of-contents)
 

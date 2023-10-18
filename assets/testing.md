@@ -86,14 +86,17 @@ After Login Screen|Input "5"|open the change PIN screen and get input for the ne
 After Login Screen|Input "6"|Showing all the personal details. and two options to edit the details and exit.|As expected|Pass
 After Login Screen|Input "7"|Exit the login screen and load a fresh welcome screen.|As expected|Pass
 Create Account screen|Name Input : blank String|Show error report "Name cannot be empty & Enter only alphabets and spaces"|As expected|Pass
+Create Account screen|Name Input : 1234444|Show error report "Name cannot be empty & Enter only alphabets and spaces"|As expected|Pass
 Create Account screen|Name Input : Eby|show the input option for the address|As expected|Pass
 Create Account screen|Address Input : blank String|Show error report "address cannot be empty"|As expected|Pass
 Create Account screen|Address Input : Apartment 2, ballinalsoe|show the input option for the Mobile Number|As expected|Pass
 Create Account screen|Mobile Number Input : hello|Show error report "Invalid mobile number. Enter a 10-digit number"|As expected|Pass
+Create Account screen|Mobile Number Input : -400022|Show error report "Invalid mobile number. Enter a 10-digit number"|As expected|Pass
 Create Account screen|Mobile Number Input : 0892334291|show the input option for the EMAIL|As expected|Pass
 Create Account screen|Email Input : 567655|Show error report "Invalid Email address"|As expected|Pass
 Create Account screen|Email Input : eby@gmail.com|show the input option for the ATM pin|As expected|Pass
 Create Account screen|Pin Input : 12|Show error report "Invalid PIN number. Enter a 4-digit number"|As expected|Pass
+Create Account screen|Pin Input : -1234|Show error report "Invalid PIN number. Enter a 4-digit number"|As expected|Pass
 Create Account screen|Pin Input : 0192|show the options for the Type of address proofs|As expected|Pass
 Create Account screen|Input "5"|Show error report "Invalid option. Choose only 1,2 or 3."|As expected|Pass
 Create Account screen|Input "2"|show the input option for the Address proof document number|As expected|Pass
@@ -112,10 +115,12 @@ Deposit Screen|Input "7"|show the input option to enter the number of 5 euro not
 Deposit Screen|Input "8"|Show error report "You did not choose any note to deposit" if no notes were chosen. Else perform the deposit.|As expected|Pass
 Deposit Screen|Input "9"|Exit the deposit screen and load the after login screen.|As expected|Pass
 Deposit Screen|Input "10"|Exit the deposit screen and load a fresh welcome screen.|As expected|Pass
+Number of notes Screen | Input "-5" | Show error report "Choose a positive number" |As expected|Pass
 Confirm Notes Screen|Input "1"|When the customer choose 8 in the deposit screen, this screen appears with the number of notes and total amount calculated using the number of notes. Input "1" confirm the deposit process. and show the Confirmation of deposit and available balance after the deposit.|As expected|Pass
 Confirm Notes Screen|Input "2"|Appears the deposit screen again to re enter the number of notes in case of any wrong entry.|As expected|Pass
 Confirm Notes Screen|Input "3"|Show error report " Invalid option. Choose only 1 or 2."|As expected|Pass
 Withdrawal Screen|Input "202"|Show error report "Invalid Amount"|As expected|Pass
+Withdrawal Screen|Input "-200"|Show error report "Invalid Amount"|As expected|Pass
 Withdrawal Screen|Input "200"|Transaction will process and show a message to collect the cash from the tray.|As expected|Pass
 Change Pin Screen|Input "abcd"|Show error report "Invalid PIN number. Enter a 4-digit number"|As expected|Pass
 Change Pin Screen|Input "2345"|Show option to confirm the updation. if press 1 Updation processes if choose 2 updation will cancel and go back to the after login page.|As expected|Pass
