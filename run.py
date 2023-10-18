@@ -131,7 +131,8 @@ def after_login(account_number):
         print(" 4. Show Statement")
         print(" 5. Change Pin Number")
         print(" 6. Personal Details")
-        print(" 7. Exit")
+        print(" 7. Transfer Amount")
+        print(" 8. Exit")
         option = input("-->> ")
         try:
             option = int(option)
@@ -160,6 +161,10 @@ def after_login(account_number):
                 show_personal_details(account_number)
                 break
             elif option == 7:
+                os.system('clear')
+                transfer_amount(account_number)
+                break
+            elif option == 8:
                 os.system('clear')
                 main()
             else:
@@ -588,11 +593,12 @@ def create_account():
     typewriter_effect(" FILL OUT THE DETAILS\n")
     typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
-    last_row = all_personal_details[-1]
-    last_account_number = last_row[0]
-    if last_account_number is None:
+    length =len(all_personal_details)
+    if  length == 0:
         account_number = "100001"
     else:
+        last_row = all_personal_details[-1]
+        last_account_number = last_row[0]
         account_number = int(last_account_number) + 1
     date_of_join = date.today().strftime("%Y-%m-%d")
     name = input_name()
