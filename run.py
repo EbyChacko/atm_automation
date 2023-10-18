@@ -336,14 +336,15 @@ def withdrawal(account_number):
     """
     while True:
         print("\n Note: The machine do not give coin.")
-        print(" Enter an amout multiple of 5 \n")
-        withdrow_amount = input("-->> ")
+        print(" Enter an amount multiple of 5 \n")
+        withdraw_amount = input("-->> ")
         try:
-            if int(withdrow_amount) % 5 or \
-             not withdrow_amount.strip() or \
-               not withdrow_amount.isdigit():
+            withdraw_amount = float(withdraw_amount)
+            if withdraw_amount % 5 != 0 or \
+            not withdraw_amount != 0 :
                 print("\n Invalid Amount\n")
             else:
+                withdraw_amount = round(withdraw_amount)
                 deposit_date = date.today().strftime("%Y-%m-%d")
                 all_statement = statement.get_all_values()
                 customer_statement = []
@@ -351,29 +352,29 @@ def withdrawal(account_number):
                     if row[0] == account_number:
                         customer_statement.append(row)
                 last_transaction = customer_statement[-1]
-                balance = int(last_transaction[5])
-                if int(withdrow_amount) > int(balance):
+                balance = float(last_transaction[5])
+                if withdraw_amount > balance:
                     os.system('clear')
-                    print("\n\n\n Insufficiant balance")
+                    print("\n\n\n Insufficient balance")
                     print(f"\nAVAILABLE BALANCE : €{balance}")
                     main()
                     break
                 else:
-                    balance -= int(withdrow_amount)
+                    balance -= withdraw_amount
                     row_statement = [account_number, deposit_date,
-                                     "Withdrow", withdrow_amount, "0", balance]
+                                    "Withdraw", withdraw_amount, "0", balance]
                     statement.append_row(row_statement)
                     os.system('clear')
                     typewriter_effect("Transaction is processing... ")
                     typewriter_effect("Please wait\n")
-                    typewriter_effect("Transaction compleated. ")
+                    typewriter_effect("Transaction completed. ")
                     typewriter_effect("Collect your cash from the tray\n")
                     print(f"\nAVAILABLE BALANCE : €{balance}")
                     perform_another_transaction(account_number)
                     break
         except ValueError as ve:
             os.system('clear')
-            print("\n Invalid Amount\n")
+            print(" Invalid Amount")
 
 
 def balance_enquiry(account_number, account_name):
