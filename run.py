@@ -598,7 +598,7 @@ def create_account():
         heading_statement = ["Account Number", "Name", "Address", "Mobile Number",
                                 "Pin Number", "Date of Join", "Email",
                                 "Address Proof Document", "Document Number" ]
-        statement.append_row(heading_statement)
+        personal_details.append_row(heading_statement)
         account_number = "100001"
     elif  length == 1:
         account_number = "100001"
