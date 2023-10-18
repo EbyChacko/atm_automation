@@ -319,11 +319,12 @@ ___
 | When a customer selects the "Login" option and fails to log in due to an incorrect account number or PIN, they may find themselves stuck because the login function operates in a loop with no clear escape option. | I created a function called "escape" that provides the user with the option to either retry their login, create a new account, or exit the system. |
 | When a ValueError occurs in the login function, the error report was previously being displayed from the main function rather than within the login function.  | Improved the error handling in the login page by appropriate 'try' and 'except' blocks. Additionally, I used the else condition within the if-elif statement to provide more accurate error reporting and better manage exceptions within the login process.|
 | After implementing "pyttsx3," and deleted the same because of error, I noticed that the requirements.txt file contained unnecessary or unwanted entries, and as a result, the deployed function was encountering errors rather than functioning as expected. | I deleted the existing requirements.txt file and then recreated it again. then by using the command "pip3 freeze > requirements.txt." fixed the issue and ensured a cleaner and more accurate requirements.txt file for the project. |
+|If the personal details in the Google Sheet are empty, the system was displaying an error | I fixed the problem by adding a conditional check: 'If the length of the spreadsheet is 0, then the account number should start from 100001.'
 
 
 ### Unfixed Bugs 
 
-- If the personal details in the Google Sheet are empty, the system was displaying an error. Unfortunately, I couldn't find a resolution for this issue. The only workaround I discovered was to always maintain at least one row of data in the personal details sheet, which seemed to prevent the error from occurring.
+- . Unfortunately, I couldn't find a resolution for this issue. The only workaround I discovered was to always maintain at least one row of data in the personal details sheet, which seemed to prevent the error from occurring.
 
  ![Error when no data in personal details](assets/readme_images/error_when_no_personal_details.png)
 

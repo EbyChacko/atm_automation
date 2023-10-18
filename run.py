@@ -162,7 +162,7 @@ def after_login(account_number):
                 break
             elif option == 7:
                 os.system('clear')
-                transfer_amount(account_number)
+                # transfer_amount(account_number)
                 break
             elif option == 8:
                 os.system('clear')
@@ -594,7 +594,13 @@ def create_account():
     typewriter_effect(" *-*-*-*-*-*-*-*-*-*-*-*\n")
     all_personal_details = personal_details.get_all_values()
     length =len(all_personal_details)
-    if  length == 0:
+    if length == 0:
+        heading_statement = ["Account Number", "Name", "Address", "Mobile Number",
+                                "Pin Number", "Date of Join", "Email",
+                                "Address Proof Document", "Document Number" ]
+        statement.append_row(heading_statement)
+        account_number = "100001"
+    elif  length == 1:
         account_number = "100001"
     else:
         last_row = all_personal_details[-1]
