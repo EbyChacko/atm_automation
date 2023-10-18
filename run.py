@@ -162,7 +162,7 @@ def after_login(account_number):
                 break
             elif option == 7:
                 os.system('clear')
-                # transfer_amount(account_number)
+                transfer_amount(account_number)
                 break
             elif option == 8:
                 os.system('clear')
@@ -587,6 +587,70 @@ def input_amount():
         except ValueError:
             print("Invalid input. Please enter a valid amount.")
     return amount
+
+
+def transfer_amount(account_number):
+    reciever = input_account_number()
+    transfer_amount = input_amount()
+    reciever_details = personal_details.find(reciever)
+    reciever_name = personal_details.cell(reciever_details.row, 2).value
+    while True:
+        print(f" Are You sending Money to {reciever_name} ?")
+        print(" 1. Yes")
+        print(" 2. No")
+        option = input("-->> : ")
+        try:
+            option = int(option)
+            if option == 1:
+                os.system('clear')
+                perform_transfer(account_number, reciever, reciever_name, transfer_amount)
+                break
+            elif option == 2:
+                os.system('clear')
+                main()
+                break
+            else:
+                print("\n Invalid option. Choose only 1 or 2.")
+        except ValueError as ve:
+            print("\n Invalid option. Choose only 1 or 2.")
+
+
+def perform_transfer(account_number, reciever, reciever_name, transfer_amount):
+    transaction_date = date.today().strftime("%Y-%m-%d")
+    all_statement = statement.get_all_values()
+    sender_statement = []
+    reciever_statement = []
+    for row in all_statement:
+        if row[0] == account_number:
+            sender_statement.append(row)
+        elif row[0] == reciever:
+            reciever_statement.append(row)
+    last_sender_transaction = sender_statement[-1]
+    sender_balance = float(last_sender_transaction[5])
+    last_sreciever_transaction = reciever_statement[-1]
+    reciever_balance = float(last_sreciever_transaction[5])
+    if float(transfer_amount) > float(sender_balance):
+        os.system('clear')
+        print("\n\n\n Insufficiant balance")
+        print(f"\nAVAILABLE BALANCE : €{sender_balance}")
+        main()
+    else:
+        sender_balance -= float(transfer_amount)
+        reciever_balance += float(transfer_amount)
+        row_sender_statement = [account_number, transaction_date,
+                        "Transfer", transfer_amount,
+                        "0", sender_balance]
+        row_reciever_statement = [reciever, transaction_date,
+                        "Transfer", "0",
+                        transfer_amount, reciever_balance]
+        statement.append_row(row_sender_statement)
+        statement.append_row(row_reciever_statement)
+        os.system('clear')
+        typewriter_effect("Transaction is processing... ")
+        typewriter_effect("Please wait\n")
+        typewriter_effect(f"€{transfer_amount} transferd to {reciever_name} ")
+        print(f"\nAVAILABLE BALANCE : €{sender_balance}")
+        perform_another_transaction(account_number)
 
 
 def review_detail(account_number):
