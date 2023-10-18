@@ -341,7 +341,7 @@ def withdrawal(account_number):
         try:
             withdraw_amount = float(withdraw_amount)
             if withdraw_amount % 5 != 0 or \
-            not withdraw_amount != 0 :
+                    not withdraw_amount != 0:
                 print("\n Invalid Amount\n")
             else:
                 withdraw_amount = round(withdraw_amount)
@@ -362,7 +362,7 @@ def withdrawal(account_number):
                 else:
                     balance -= withdraw_amount
                     row_statement = [account_number, deposit_date,
-                                    "Withdraw", withdraw_amount, "0", balance]
+                                     "Withdraw", withdraw_amount, "0", balance]
                     statement.append_row(row_statement)
                     os.system('clear')
                     typewriter_effect("Transaction is processing... ")
