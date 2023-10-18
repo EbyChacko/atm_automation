@@ -553,6 +553,29 @@ def input_document_number():
             return document_number
 
 
+def input_account_number():
+    """
+    accept user input for Account Number and validate it
+    """
+    while True:
+        receiver = input("\nEnter Account Number of the Receiver: ")
+        if not receiver.strip() or not receiver.isdigit():
+            os.system('clear')
+            print("\n\nInvalid input. Please enter a valid account number.")
+            continue
+        receiver_details = personal_details.find(receiver)
+        if not receiver_details:
+            os.system('clear')
+            print("\n\nAccount Number Not Found. Please enter a valid account number.")
+            continue
+        valid_receiver = personal_details.cell(receiver_details.row, 1).value
+        if receiver != valid_receiver:
+            os.system('clear')
+            print("\n\nAccount Number Not Found. Please enter a valid account number.")
+            continue
+        return receiver
+
+
 def review_detail(account_number):
     """
     give the customer a option to review the personal details
