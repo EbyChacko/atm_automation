@@ -576,6 +576,19 @@ def input_account_number():
         return receiver
 
 
+def input_amount():
+    while True:
+        try:
+            amount = float(input("Enter an amount: "))
+            if amount <= 0:
+                print("Amount must be positive. Please enter a valid amount.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid amount.")
+    return amount
+
+
 def review_detail(account_number):
     """
     give the customer a option to review the personal details
