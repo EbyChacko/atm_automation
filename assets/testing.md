@@ -61,6 +61,13 @@ Certainly, here are some user testing stories for the ATM automation project:
 - I will intentionally provide incorrect data, such as an invalid atm pin or a non-multiple-of-5 withdrawal amount.
 - I expect the system to reject these inputs and display appropriate error messages.
 
+9. Transfer Amount Testing:
+
+- As a user, I want to test the "Transfer Amount" feature to send funds to another account.
+- I will select the "Transfer Amount" option and input the recipient's account number along with the amount I want to send.
+- I expect the system to transfer the specified amount to the recipient's account while deducting the same amount from my account.
+- Furthermore, I anticipate that both my account statement and the recipient's account statement will be updated to reflect this transaction.
+
 These user testing stories cover a range of scenarios to ensure that the ATM automation project is user-friendly, secure, and reliable. They help identify and address issues, validate functionality, and confirm a positive user experience.
 
 ___
@@ -134,3 +141,13 @@ Update personal details Screen|Input "4"|show the input option for the Email.and
 Update personal details Screen|Input "5"|show the input option for the Address Proof. and if the user confirm the input, system update the Address proof.|As expected|Pass
 Update personal details Screen|Input "6"|Exit the deposit screen and load the after login screen.|As expected|Pass
 Update personal details Screen|Input "7"|Show error report " Invalid option. Choose only from 1 to 6"|As expected|Pass
+Transfer amount Screen|Account number Input "-12345"|Show error report " Invalid input. Please enter a valid account number"|As expected|Pass
+Transfer amount Screen|Account number Input "abcdef"|Show error report " Invalid input. Please enter a valid account number"|As expected|Pass
+Transfer amount Screen|Account number Input "123456"|Show error report " Account Number not found. Please enter a valid account number"|As expected|Pass
+Transfer amount Screen|Account number Input "100001"|Show input message for the Amount |As expected|Pass
+Transfer amount Screen|Amount Input "abcdef"|Show error report " Invalid input. Please enter a valid amount "|As expected|Pass
+Transfer amount Screen|Amount Input "-50"|Show error report " Amount must be positive. Please enter a valid amount. "|As expected|Pass
+Transfer amount Screen|Amount Input "50"|Show the option to confirm the name of the sender and confirm sending |As expected|Pass
+Transfer amount Screen|option Input "5"|Show error report " Invalid option. Choose only 1 or 2. "|As expected|Pass
+Transfer amount Screen|option Input "1"|Amount transfer will take place and show the balance amount on the screen|As expected|Pass
+Transfer amount Screen|option Input "2"|Exit the screen and load the welcome screen |As expected|Pass

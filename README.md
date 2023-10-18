@@ -241,9 +241,9 @@ In the ATM system, it is common for users to receive audible announcements or in
 
 I understand that, traditionally, in an ATM system, it's standard to configure the software to return to the welcome screen after every transaction as a security measure. However, for the sake of user convenience, I've implemented an option that allows users to navigate back to the after-login screen after each transaction, providing a more user-friendly experience.
 
-### __4. Money Transfer between accounts__ 
+### __4. OOP concept__ 
 
-Due to time constraints, I had to reduce the project's scope. As a result, I made the decision not to implement the functionality for money transfers between accounts.
+I was not initially aware that utilizing object-oriented programming (OOP) concepts was necessary to achieve a distinction grade for this project. Unfortunately, I only realized this when I had already completed my project. However, I acknowledge the importance of using OOP and intend to incorporate it into my next project.
 
 [Back to Table of Contents](#table-of-contents)
 
